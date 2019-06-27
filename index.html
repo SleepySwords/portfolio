@@ -3,9 +3,8 @@
   <head>
     <script>
       let time = 100000000
-      let timer = document.getElementById('timer');
       let a = document.createElement("a");
-      timer.append(a)
+      document.body.append(a)
       setInterval(() => {
         time--;
         a.innerText = time;
