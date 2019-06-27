@@ -2,13 +2,24 @@
 <html>
   <head>
     <script>
-      
+      let time = 100000000
+      let timer = document.getElementById('timer');
+      let a = document.createElement("a");
+      timer.append(a)
+      setInterval(() => {
+        time--;
+        a.innerText = time;
+        if (time <= 0) {
+          a.innerText = "Hope you didn't wait forever, also found me!";
+          }
+      }, 1000);
     </script>
+    <title>WOOAH IM A TITLE</title>
     <style>
       html {
         background-color: #000060;
       }
-      p, h1 {
+      p, h1, a {
         color: white;
         font-family: sans-serif;
       }
@@ -24,5 +35,6 @@
     <!-- Hello there! found me :)-->
     <button onclick="alert('Oh you found me :)')">Oh look a button :p</button>
     <div id="timer"></div>
+    <a style="color: #000060;">Wooo hidden text, found me somemore</a>
   </body>
 </html>
