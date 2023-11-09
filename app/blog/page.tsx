@@ -1,20 +1,25 @@
-import Navbar from '@/components/navbar'
+import Navbar from "@/components/navbar";
 
 export default function Blog() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8">
       <Navbar />
 
-      <div className="relative flex place-items-center grid">
+      <div className="relative flex grid place-items-center">
         <div>
-          <h1 className="text-6xl font-bold mb-10" style={{ color: "#EBBAB9" }}>¯\_(ツ)_/¯</h1>
+          <h1 className="mb-10 text-6xl font-bold" style={{ color: "#EBBAB9" }}>
+            ¯\_(ツ)_/¯
+          </h1>
         </div>
-        <a className="text-xl font-bold text-pink-300" style={{ color: "#FF9997" }}>
+        <a
+          className="text-xl font-bold text-pink-300"
+          style={{ color: "#FF9997" }}
+        >
           SleepySword
         </a>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -22,7 +27,7 @@ export default function Blog() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -39,7 +44,7 @@ export default function Blog() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -56,7 +61,7 @@ export default function Blog() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -73,7 +78,7 @@ export default function Blog() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -84,5 +89,5 @@ export default function Blog() {
         </a>
       </div>
     </main>
-  )
+  );
 }
