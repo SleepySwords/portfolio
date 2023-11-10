@@ -6,21 +6,21 @@ export default function Navbar() {
         <div className="flex-grow">
           <a
             href="./"
-            className="mt-0 mt-4 block inline-block font-bold text-white"
+            className="mt-0 block inline-block font-bold text-white"
           >
             ¯\_(ツ)_/¯
           </a>
         </div>
         <div>
           <a
-            href="./blog"
-            className="mt-0 mt-4 px-4 py-2 leading-none text-white underline transition-colors hover:text-gray-400"
+            href="blog"
+            className="px-4 py-2 leading-none text-white underline transition-colors hover:text-gray-400"
           >
             blog
           </a>
           <a
-            href="./projects"
-            className="mt-0 mt-4 px-4 py-2 leading-none text-white underline transition-colors hover:text-gray-400"
+            href="projects"
+            className="px-4 py-2 leading-none text-white underline transition-colors hover:text-gray-400"
           >
             projects
           </a>
