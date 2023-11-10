@@ -12,17 +12,11 @@ export default function Home() {
       <div className="relative flex grid flex-grow place-items-center">
         <div className="place-items-center text-center">
           <div>
-            <h1
-              className="mb-20 text-5xl font-bold lg:text-8xl"
-              style={{ color: "#EBBAB9" }}
-            >
+            <h1 className="primary-colour mb-20 text-5xl font-bold lg:text-8xl">
               ¯\_(ツ)_/¯
             </h1>
           </div>
-          <a
-            className="mt-25 text-xl font-bold text-pink-300"
-            style={{ color: "#FF9997" }}
-          >
+          <a className="mt-25 secondary-colour text-xl font-bold">
             SleepySwords
           </a>
           <div className="mb-32 mt-10 grid grid-cols-3 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">

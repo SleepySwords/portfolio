@@ -19,7 +19,7 @@ export default function Navbar() {
             blog
           </a>
           <a
-            href="#"
+            href="./projects"
             className="mt-0 mt-4 px-4 py-2 leading-none text-white underline transition-colors hover:text-gray-400"
           >
             projects
