@@ -1,39 +1,17 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-export default function TableOfContents({toc}) {
-  const items = toc.filter(
-    (item) => item.id && (item.level === 2 || item.level === 3)
-  );
-
-  if (items.length <= 1) {
-    return null;
-  }
-
+export default function SideBar({ posts }: { posts: { slug: string, id: number, title: string, date: Date }[] }) {
   return (
-    <nav className="toc">
-      <ul className="flex column">
-        {items.map((item) => {
-          const href = `#${item.id}`;
-          const active =
-            typeof window !== 'undefined' && window.location.hash === href;
-          return (
-            <li
-              key={item.title}
-              className={[
-                active ? 'active' : undefined,
-                item.level === 3 ? 'padded' : undefined,
-              ]
-                .filter(Boolean)
-                .join(' ')}
-            >
-              <Link href={href}>
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
+    <div>
+      <ul className="sticky top-36">
+        <li className="font-bold text-2xl mb-5">All blogs</li>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <Link href={`/blog/${post.slug}`} className="underline text-1xl">{post.title} - {post.date.toLocaleDateString()}</Link>
+          </li>
+        ))}
       </ul>
-    </nav>
+    </div>
   );
 }

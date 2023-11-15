@@ -9,7 +9,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-8">
       <Navbar />
 
-      <div className="relative flex grid flex-grow place-items-center">
+      <div className="relative flex flex-grow place-items-center">
         <div className="place-items-center text-center">
           <div>
             <h1 className="primary-colour mb-20 text-5xl font-bold lg:text-8xl">

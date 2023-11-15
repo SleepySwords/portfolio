@@ -1,21 +1,24 @@
-import Prism from 'prismjs';
+"use client"!;
 
-import * as React from 'react';
+import hljs from "highlight.js";
+import { useEffect } from "react";
+import "highlight.js/styles/github-dark.css";
 
-export function CodeBlock({children, 'data-language': language}) {
-  const ref = React.useRef(null);
+import * as React from "react";
 
-  React.useEffect(() => {
-    if (ref.current) Prism.highlightElement(ref.current, false);
-  }, [children]);
-
+export function CodeBlock({ children, "data-language": language }: { children: string, "data-language": string}) {
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
   return (
-    <div className="code border hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30" aria-live="polite">
-      <pre
-        ref={ref}
-        className={`language-${language}`}
-      >
-        {children}
+    <div>
+      <pre className={`language-${language} whitespace-pre-wrap`}>
+        <code
+          className={`language-${language} overflow-clip hljs rounded border border-neutral-700 bg-black bg-neutral-800/30`}
+          style={{overflowWrap: "anywhere"}}
+        >
+          {children}
+        </code>
       </pre>
     </div>
   );

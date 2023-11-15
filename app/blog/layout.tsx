@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/navbar";
-import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
   description: "Portfolio website",
 };
 
-export default function BlogLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -21,8 +20,10 @@ export default function BlogLayout({
       <body className={inter.className}>
         <main className="justify-top flex min-h-screen flex-col items-center p-8">
           <Navbar />
-          <Sidebar toc={["etst"]} />
-          {children}
+          <div className="secondary-colour mt-20 place-items-start text-3xl font-bold">
+            My ramblings
+          </div>
+          <div className="mt-10 grid w-10/12 text-left">{children}</div>
         </main>
       </body>
     </html>
