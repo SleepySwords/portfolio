@@ -6,7 +6,13 @@ import "highlight.js/styles/github-dark.css";
 
 import * as React from "react";
 
-export function CodeBlock({ children, "data-language": language }: { children: string, "data-language": string}) {
+export function CodeBlock({
+  children,
+  "data-language": language,
+}: {
+  children: string;
+  "data-language": string;
+}) {
   useEffect(() => {
     hljs.highlightAll();
   }, []);
@@ -14,8 +20,8 @@ export function CodeBlock({ children, "data-language": language }: { children: s
     <div>
       <pre className={`language-${language} whitespace-pre-wrap`}>
         <code
-          className={`language-${language} overflow-clip hljs rounded border border-neutral-700 bg-black bg-neutral-800/30`}
-          style={{overflowWrap: "anywhere"}}
+          className={`language-${language} hljs overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
+          style={{ overflowWrap: "anywhere" }}
         >
           {children}
         </code>

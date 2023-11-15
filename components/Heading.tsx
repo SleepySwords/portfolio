@@ -5,9 +5,7 @@ export function Heading({ id = "", level = 1, children, className }: any) {
     `h${level}`,
     {
       id: children,
-      className: [className]
-        .filter(Boolean)
-        .join(" "),
+      className: [className].filter(Boolean).join(" "),
     },
     children,
   );

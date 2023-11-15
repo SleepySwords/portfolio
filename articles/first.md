@@ -13,7 +13,7 @@ First time using react and nextjs, the App Router style was actually quite pleas
 
 Another great thing is grids and flexboxes, thank god to whoever introduced them into CSS. This in addition to Tailwind CSS made it fairly easy (for the most part) to layout the different elements, it was surprisingly easy to centre a div (something that I very much dreaded). I did however have trouble styling things to the left if I was using `place-item-center`.
 
-This with some *stealing* from the default starter repo like those buttons in [projects](/projects) allowed to easily make the homepage and the projects page. I'm also fairly happy with how both pages turned out and happy with the way the navbar turned out.
+This with some _stealing_ from the default starter repo like those buttons in [projects](/projects) allowed to easily make the homepage and the projects page. I'm also fairly happy with how both pages turned out and happy with the way the navbar turned out.
 
 # Le bad
 
@@ -31,7 +31,7 @@ However, this allowed me to more easily create a Sidebar listing all the blog po
 
 # Final thoughts and future considerations
 
-I'm actually genuinely happy with how this site turned out. It was a really good idea to make a mockup *(VCE Software Development reference)* in [Figma](https://www.figma.com/) first before committing to it. Being able to customise pretty much anything with Markdoc is pretty neat (albeit I have to actually create the components), like codeblocks with syntax highlighting (omg?!).
+I'm actually genuinely happy with how this site turned out. It was a really good idea to make a mockup _(VCE Software Development reference)_ in [Figma](https://www.figma.com/) first before committing to it. Being able to customise pretty much anything with Markdoc is pretty neat (albeit I have to actually create the components), like codeblocks with syntax highlighting (omg?!).
 
 ```rust
 pub fn this_is_so_cool_highlighting() {
@@ -44,6 +44,7 @@ This is pretty cool though, being able to use Markdown, especially since I have 
 Something I might do is explore using [MDXJS](https://mdxjs.com/) instead of Markdoc, just to see how that turns out.
 
 That being said there is still a lot that needs to be done with this site:
+
 - Sort the left sidebar by ids/creation date
 - ~~Make the left sidebar not move when scrolling~~
 - Make the navbar not sticky

@@ -18,11 +18,13 @@ export async function generateStaticParams() {
     path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles"),
   );
   let count = 0;
-  return await Promise.all(files.map(async (post) => {
-    const slug = post.replace(".md", "")
-    const { title, date } = await getMarkdocContent(slug);
-    return { slug: slug, id: count, title: title, date: date }
-  }));
+  return await Promise.all(
+    files.map(async (post) => {
+      const slug = post.replace(".md", "");
+      const { title, date } = await getMarkdocContent(slug);
+      return { slug: slug, id: count, title: title, date: date };
+    }),
+  );
 }
 
 const config: Config = {
@@ -30,21 +32,27 @@ const config: Config = {
     fence,
     link,
     list,
-    heading
+    heading,
   },
   variables: {},
-  tags: {}
-}
+  tags: {},
+};
 
 async function getMarkdocContent(slug: string) {
-  let file = fs.readFileSync(path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles/".concat(slug, ".md")), 'utf-8');
+  let file = fs.readFileSync(
+    path.join(
+      serverRuntimeConfig.PROJECT_ROOT,
+      "./articles/".concat(slug, ".md"),
+    ),
+    "utf-8",
+  );
 
-  let { title, date } = matter(file).data
+  let { title, date } = matter(file).data;
 
   let ast = Markdoc.parse(file);
   let content = Markdoc.transform(ast, config);
 
-  return { content, ast, title, date }
+  return { content, ast, title, date };
 }
 
 function extractHeadings(node: any, sections: any[] = []) {
@@ -52,13 +60,13 @@ function extractHeadings(node: any, sections: any[] = []) {
     if (node.type == "heading") {
       const section = {
         title: node.children[0].children[0].attributes.content,
-        level: node.attributes.level
-      }
-      sections.push(section)
+        level: node.attributes.level,
+      };
+      sections.push(section);
     }
     if (node.children) {
       for (let n of node.children) {
-        extractHeadings(n, sections)
+        extractHeadings(n, sections);
       }
     }
   }
@@ -75,14 +83,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
-      <div className="hidden sm:flex grow-0 shrink-0 basis-64">
+      <div className="hidden shrink-0 grow-0 basis-64 sm:flex">
         <SideBar posts={staticParams} />
       </div>
       <div className="remove-all flex-grow">
-        <div className="font-bold text-3xl mb-5">{title} - {date.toLocaleDateString()}</div>
+        <div className="mb-5 text-3xl font-bold">
+          {title} - {date.toLocaleDateString()}
+        </div>
         {react}
       </div>
-      <div className="hidden lg:flex grow-0 shrink-0 basis-64">
+      <div className="hidden shrink-0 grow-0 basis-64 lg:flex">
         <TableOfContents tableOfContents={tableOfContents} />
       </div>
     </main>

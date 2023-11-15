@@ -10,7 +10,7 @@ export default async function Blog() {
   return (
     <div className="relative flex w-full flex-grow">
       <div className="w-full">
-        <SideBar posts={staticParams}/>
+        <SideBar posts={staticParams} />
       </div>
     </div>
   );

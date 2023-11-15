@@ -29,7 +29,12 @@ body {
 }
 
 @layer base {
-  h1, h2, h3, pre, p, hr {
+  h1,
+  h2,
+  h3,
+  pre,
+  p,
+  hr {
     @apply mb-5;
   }
   h1 {
