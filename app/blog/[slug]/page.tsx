@@ -4,9 +4,17 @@ import getConfig from "next/config";
 import SideBar from "@/components/Sidebar";
 import Markdoc, { Config } from "@markdoc/markdoc";
 import React from "react";
-import { components, fence, heading, link, list } from "@/markdoc/nodes";
+import {
+  components,
+  fence,
+  heading,
+  link,
+  list,
+  callout,
+} from "@/markdoc/markdoc";
 import matter from "gray-matter";
 import TableOfContents from "@/components/TableOfContents";
+import Math from "@/components/Math";
 
 const { serverRuntimeConfig } = getConfig();
 
@@ -35,7 +43,9 @@ const config: Config = {
     heading,
   },
   variables: {},
-  tags: {},
+  tags: {
+    callout,
+  },
 };
 
 async function getMarkdocContent(slug: string) {
@@ -90,7 +100,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div className="mb-5 text-3xl font-bold">
           {title} - {date.toLocaleDateString()}
         </div>
-        {react}
+        <Math>{react}</Math>
       </div>
       <div className="hidden shrink-0 grow-0 basis-64 lg:flex">
         <TableOfContents tableOfContents={tableOfContents} />

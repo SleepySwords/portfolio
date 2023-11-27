@@ -39,6 +39,12 @@ pub fn this_is_so_cool_highlighting() {
 }
 ```
 
+Latex with MathJax?!
+
+$$\sigma = \sqrt {\frac{\sum\(x_i - \mu\)^2}{N}}$$
+
+I'll probably feature more cool stuff when I add support for them.
+
 This is pretty cool though, being able to use Markdown, especially since I have already setup Neovim to be able to edit Markdown files.
 
 Something I might do is explore using [MDXJS](https://mdxjs.com/) instead of Markdoc, just to see how that turns out.
@@ -47,9 +53,9 @@ That being said there is still a lot that needs to be done with this site:
 
 - Sort the left sidebar by ids/creation date
 - ~~Make the left sidebar not move when scrolling~~
-- Make the navbar not sticky
+- Make the navbar sticky
 - ~~Create a table of contents to the right~~
-- Add more style elements (eg: blockquotes)
+- Add more style elements (eg: blockquotes, tables)
 - Add more stuff to the social media area in the homepage
 - ~~Fix some weird looking elements on mobile~~
 
