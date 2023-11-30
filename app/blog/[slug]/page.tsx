@@ -2,15 +2,11 @@ import fs from "fs";
 import path from "path";
 import getConfig from "next/config";
 import SideBar from "@/components/Sidebar";
-import Markdoc, { Config } from "@markdoc/markdoc";
+import Markdoc from "@markdoc/markdoc";
 import React from "react";
 import {
   components,
-  fence,
-  heading,
-  link,
-  list,
-  callout,
+  config,
 } from "@/markdoc/markdoc";
 import matter from "gray-matter";
 import TableOfContents from "@/components/TableOfContents";
@@ -34,19 +30,6 @@ export async function generateStaticParams() {
     }),
   );
 }
-
-const config: Config = {
-  nodes: {
-    fence,
-    link,
-    list,
-    heading,
-  },
-  variables: {},
-  tags: {
-    callout,
-  },
-};
 
 async function getMarkdocContent(slug: string) {
   let file = fs.readFileSync(

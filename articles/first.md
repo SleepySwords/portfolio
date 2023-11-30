@@ -41,7 +41,25 @@ pub fn this_is_so_cool_highlighting() {
 
 Latex with MathJax?!
 
-$$\sigma = \sqrt {\frac{\sum\(x_i - \mu\)^2}{N}}$$
+$$\sigma = \sqrt {\int_{-\infty}^{\infty}{(x - \mu\)^2f(x)dx}}$$
+
+Fun callouts!
+
+{% callout type="note" title="test" %}
+This is a test
+{% /callout %}
+
+{% callout type="caution" title="test" %}
+This is a test
+{% /callout %}
+
+{% callout type="warning" title="test" %}
+This is a test
+{% /callout %}
+
+{% callout type="check" title="test" %}
+This is a test
+{% /callout %}
 
 I'll probably feature more cool stuff when I add support for them.
 

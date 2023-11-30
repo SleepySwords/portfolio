@@ -18,6 +18,11 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .secondary-colour {
@@ -35,7 +40,8 @@ body {
   pre,
   p,
   hr {
-    @apply mb-5;
+    @apply mb-4;
+    @apply mt-4;
   }
   h1 {
     @apply text-2xl;
@@ -55,6 +61,11 @@ body {
     @apply border-t-4;
   }
 }
+
+.callout p {
+  margin: 0;
+}
+
 /* body { */
 /*   color: rgb(var(--foreground-rgb)); */
 /*   background: linear-gradient( */
