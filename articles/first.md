@@ -61,6 +61,21 @@ This is a test
 This is a test
 {% /callout %}
 
+Mermaid diagrams?
+
+```mermaid
+%%{init: {"theme": "dark", "flowchart": {"curve": "basis"}} }%%
+flowchart LR
+    c1---a2
+    c1---a3
+    c1---a4
+    subgraph one
+    a2([Add the user])
+    a3([Edit the user])
+    a4([Remove the used])
+    end
+```
+
 I'll probably feature more cool stuff when I add support for them.
 
 This is pretty cool though, being able to use Markdown, especially since I have already setup Neovim to be able to edit Markdown files.
