@@ -31,3 +31,11 @@ export default function RootLayout({
     </html>
   );
 }
+
+//        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+//        <script
+//          // eslint-disable-next-line react/no-danger
+//          dangerouslySetInnerHTML={{
+//            __html: `mermaid.initialize({startOnLoad: true});`,
+//          }}
+//        />
