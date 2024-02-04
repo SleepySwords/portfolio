@@ -1,8 +1,8 @@
 export default function Navbar() {
   return (
     // <nav className="fixed flex items-center w-11/12 justify-between flex-wrap">
-    <nav className="flex w-full flex-wrap items-center justify-between">
-      <div className="block flex w-auto w-full flex-grow items-center">
+    <nav className="w-full sticky z-10 top-0 background-colour">
+      <div className="block p-8 flex w-auto w-full flex-grow items-center">
         <div className="flex-grow">
           <a href="/" className="mt-0 block inline-block font-bold text-white">
             ¯\_(ツ)_/¯

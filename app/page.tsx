@@ -46,36 +46,37 @@ export default function Home() {
     // });
   }, []);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-
-      <div className="relative flex flex-grow place-items-center">
-        <div className="place-items-center text-center">
-          <h1 className="primary-colour title mb-20 text-5xl font-bold lg:text-8xl">
-            ¯\_(ツ)_/¯
-          </h1>
-          <div className="mb-5 mt-20">
-            <a className="secondary-colour text-xl font-bold">SleepySwords</a>
-          </div>
-          {/*<a id="status" className="text-l font-bold text-gray-400">
+      <main className="flex flex-col flex-grow items-center justify-between">
+        <div className="relative flex flex-grow place-items-center p-8">
+          <div className="place-items-center text-center">
+            <h1 className="primary-colour title mb-20 text-5xl font-bold lg:text-8xl">
+              ¯\_(ツ)_/¯
+            </h1>
+            <div className="mb-5 mt-20">
+              <a className="secondary-colour text-xl font-bold">SleepySwords</a>
+            </div>
+            {/*<a id="status" className="text-l font-bold text-gray-400">
             Developer  |  Student
           </a>*/}
-          <div className="mb-32 mt-10 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
-            <Link
-              href="https://github.com/sleepySwords/"
-              className={`mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
-            >
-              <FaGithub />
-            </Link>
-            <Link
-              href="mailto:admin@sleepyswords.dev"
-              className={`mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
-            >
-              <MdEmail />
-            </Link>
+            <div className="mb-32 mt-10 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
+              <Link
+                href="https://github.com/sleepySwords/"
+                className={`mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              >
+                <FaGithub />
+              </Link>
+              <Link
+                href="mailto:admin@sleepyswords.dev"
+                className={`mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              >
+                <MdEmail />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

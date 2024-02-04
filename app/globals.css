@@ -25,6 +25,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.background-colour {
+  background-color: rgb(var(--background-rgb));
+}
+
 .secondary-colour {
   color: #ff9997;
 }

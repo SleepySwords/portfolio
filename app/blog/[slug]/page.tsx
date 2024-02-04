@@ -21,14 +21,15 @@ export async function generateStaticParams() {
   let files = fs.readdirSync(
     path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles"),
   );
-  let count = 0;
-  return await Promise.all(
+  let articles = await Promise.all(
     files.map(async (post) => {
       const slug = post.replace(".md", "");
       const { title, date } = await getMarkdocContent(slug);
-      return { slug: slug, id: count, title: title, date: date };
+      return { slug: slug, title: title, date: date };
     }),
   );
+  articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+  return articles;
 }
 
 async function getMarkdocContent(slug: string) {

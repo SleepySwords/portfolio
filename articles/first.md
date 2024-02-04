@@ -97,9 +97,9 @@ Something I might do is explore using [MDXJS](https://mdxjs.com/) instead of Mar
 
 That being said there is still a lot that needs to be done with this site:
 
-- Sort the left sidebar by ids/creation date
+- ~~Sort the left sidebar by ids/creation date~~
 - ~~Make the left sidebar not move when scrolling~~
-- Make the navbar sticky
+- ~~Make the navbar sticky~~
 - ~~Create a table of contents to the right~~
 - Add more style elements (eg: blockquotes, tables)
 - Add more stuff to the social media area in the homepage

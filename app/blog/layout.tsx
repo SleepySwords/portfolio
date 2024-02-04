@@ -7,18 +7,20 @@ export const metadata: Metadata = {
   description: "Portfolio website",
 };
 
-export default function RootLayout({
+export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <main className="justify-top flex min-h-screen flex-col items-center p-8">
+    <div className="justify-top flex flex-col min-h-screen">
       <Navbar />
-      <div className="secondary-colour mt-20 place-items-start text-3xl font-bold">
-        My ramblings
-      </div>
-      <div className="mt-10 grid w-10/12 text-left">{children}</div>
-    </main>
+      <main className="justify-top flex flex-col items-center p-8">
+        <div className="secondary-colour place-items-start text-3xl font-bold">
+          My ramblings
+        </div>
+        <div className="mt-10 grid w-10/12 text-left">{children}</div>
+      </main>
+    </div>
   );
 }

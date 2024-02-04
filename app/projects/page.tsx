@@ -36,30 +36,32 @@ export default function Projects() {
   ];
 
   return (
-    <main className="justify-top flex min-h-screen flex-col items-center p-8">
+    <div className="justify-top flex min-h-screen flex-col">
       <Navbar />
-      <div className="secondary-colour mt-20 place-items-start text-3xl font-bold">
-        The fun stuff!
-      </div>
-      <div className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
-        {projects.map((item) => (
-          <a
-            href={item.link}
-            key={item.id}
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-neutral-700 hover:bg-neutral-800/30"
-          >
-            <h2 className={`mb-3 text-2xl font-semibold underline`}>
-              {item.title}{" "}
-              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                -&gt;
-              </span>
-            </h2>
-            <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              {item.description}
-            </p>
-          </a>
-        ))}
-      </div>
-    </main>
+      <main className="p-8 flex flex-col items-center">
+        <div className="secondary-colour place-items-start text-3xl font-bold">
+          The fun stuff!
+        </div>
+        <div className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
+          {projects.map((item) => (
+            <a
+              href={item.link}
+              key={item.id}
+              className="group mt-4 rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-neutral-700 hover:bg-neutral-800/30"
+            >
+              <h2 className={`mb-3.5 mt-0 text-2xl font-semibold underline`}>
+                {item.title}{" "}
+                <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                  -&gt;
+                </span>
+              </h2>
+              <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+                {item.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
