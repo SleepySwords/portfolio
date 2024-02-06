@@ -1,12 +1,9 @@
-import Navbar from "@/components/navbar";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8">
-      <Navbar />
-
-      <div className="relative flex flex-grow place-items-center">
+    <main className="flex flex-col flex-grow items-center justify-between">
+      <div className="relative flex flex-grow place-items-center p-8">
         <div className="place-items-center text-center">
           <div>
             <h1

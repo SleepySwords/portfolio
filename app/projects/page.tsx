@@ -36,8 +36,6 @@ export default function Projects() {
   ];
 
   return (
-    <div className="justify-top flex min-h-screen flex-col">
-      <Navbar />
       <main className="p-8 flex flex-col items-center">
         <div className="secondary-colour place-items-start text-3xl font-bold">
           The fun stuff!
@@ -62,6 +60,5 @@ export default function Projects() {
           ))}
         </div>
       </main>
-    </div>
   );
 }
