@@ -18,13 +18,13 @@ export function CodeBlock({
     hljs.highlightAll();
   }, []);
 
+  let [copied, setCopied] = React.useState(0);
+
   if (language === "mermaid") {
     return <pre className="mermaid whitespace-pre-wrap">
       {children}
     </pre>
   }
-
-  let [copied, setCopied] = React.useState(0);
 
   const handleClick = () => {
     navigator.clipboard.writeText(children);
