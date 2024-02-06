@@ -18,19 +18,29 @@ export function CodeBlock({
     hljs.highlightAll();
   }, []);
 
-  if (language == "mermaid") {
+  if (language === "mermaid") {
     return <pre className="mermaid whitespace-pre-wrap">
-    {children}
+      {children}
     </pre>
   }
 
+  let [copied, setCopied] = React.useState(0);
+
   const handleClick = () => {
     navigator.clipboard.writeText(children);
+    setCopied(n => n + 1);
+    setTimeout(() => {
+      setCopied(n => n - 1);
+    }, 1000);
   }
+
   return (
-    <div>
-      <pre className={`language-${language} whitespace-pre-wrap relative`}>
-        <div className="absolute border rounded p-1.5 border-neutral-700 hover:bg-neutral-900 bg-neutral-800 right-2 top-2 text-neutral-300 cursor-pointer transition-colors" onClick={handleClick}><HiClipboardCopy /></div>
+    <div className="relative">
+      <div className="flex absolute border rounded p-1.5 border-neutral-700 {}hover:bg-neutral-900 bg-neutral-800 right-2 top-2 text-neutral-300 cursor-pointer transition-colors" onClick={handleClick}>
+        {copied > 0 && <div className="text-xs pr-1">Copied</div>}
+        <HiClipboardCopy />
+      </div>
+      <pre className={`whitespace-pre-wrap language-${language}`}>
         <code
           className={`language-${language} hljs overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
           style={{ overflowWrap: "anywhere" }}
