@@ -56,7 +56,8 @@ However, it retained the elements of the `elm` structure. Elements that should h
 
 # Full circle
 
-I've come to start thinking if I've just come full circle. With every iteration, it seems more and more meaningless to worry about how the `Overlays` are actually implemented and to just focus on adding new features. It might be better to not always just overengineer things and really only consider refactoring when an issue occurs.
+~~I've come to start thinking if I've just come full circle. With every iteration, it seems more and more meaningless to worry about how the `Overlays` are actually implemented and to just focus on adding new features. It might be better to not always just overengineer things and really only consider refactoring when an issue occurs.~~
 
-This obviosuly comes with the caveat that it is much harder to refactor thing the larger a project grows. I very much felt this when refactoring this project, and it is relatively small. Perhaps, I should've thought the base architecture a little more through before jumping right in. Perhaps if I did I would've encountered unforseen problems. I'm not really sure what you would do, I guess just chug along and make cool stuff. In the end *design is hard*.
+I have kind off changed my mind, I feel like these refactors are good, even if we do come full circle. I have definately learnt a lot more about how to better structure things.
 
+While this obviosuly comes with the caveat that it is much harder to refactor thing the larger a project grows, I still think it was worth it. Let's just chug along and make cool stuff! In the end *design is hard*.

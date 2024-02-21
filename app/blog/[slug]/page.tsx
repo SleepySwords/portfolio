@@ -9,8 +9,7 @@ import {
   config,
 } from "@/markdoc/markdoc";
 import matter from "gray-matter";
-import TableOfContents from "@/components/TableOfContents";
-import Math from "@/components/Math";
+import MarkdownContent from "@/components/MarkdownContent";
 
 const { serverRuntimeConfig } = getConfig();
 
@@ -70,25 +69,15 @@ function extractHeadings(node: any, sections: any[] = []) {
 export default async function Page({ params }: { params: { slug: string } }) {
   const staticParams = await generateStaticParams();
   const { content, ast, title, date } = await getMarkdocContent(params.slug);
-
   const tableOfContents = extractHeadings(ast);
-
-  const react = Markdoc.renderers.react(content, React, { components });
+  const reactContent = Markdoc.renderers.react(content, React, { components });
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
       <div className="hidden shrink-0 grow-0 basis-64 sm:flex">
         <SideBar posts={staticParams} />
       </div>
-      <div className="remove-all flex-grow">
-        <div className="mb-5 text-3xl font-bold">
-          {title} - {date.toLocaleDateString()}
-        </div>
-        <Math>{react}</Math>
-      </div>
-      <div className="hidden shrink-0 grow-0 basis-64 lg:flex">
-        <TableOfContents tableOfContents={tableOfContents} />
-      </div>
+      <MarkdownContent title={title} date={date} content={reactContent} tableOfContents={tableOfContents} />
     </main>
   );
 }

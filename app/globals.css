@@ -37,6 +37,10 @@ html {
   color: #ebbab9;
 }
 
+.secondary-bg-colour {
+  background-color: #ff9997;
+}
+
 @layer base {
   h1,
   h2,
