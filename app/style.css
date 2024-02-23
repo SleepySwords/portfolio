@@ -23,7 +23,7 @@
   transform: translateX(35px);
 }
 
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
   .left-1 {
     transform: translateX(-200px);
   }

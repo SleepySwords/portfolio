@@ -1,5 +1,37 @@
-import Navbar from "@/components/navbar";
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function Projects() {
+  const projectRef = useRef<HTMLDivElement>(null);
+
+  function handleMouse(event: MouseEvent) {
+    let x = event.clientX;
+    let y = event.clientY;
+    if (projectRef.current) {
+      const cards = projectRef.current.getElementsByClassName("cards");
+      for (let i = 0; i < cards.length; i++) {
+        let card: HTMLElement = cards[i] as HTMLElement;
+        let box = card.getBoundingClientRect();
+        let middleX = (box.left + box.right) / 2;
+        let middleY = (box.top + box.bottom) / 2;
+        let radX = Math.atan((x - middleX) / 1000);
+        let radY = Math.atan((middleY - y) / 1000);
+        if (x > box.left && x < box.right && y > box.top && y < box.bottom) {
+          card.style.transform = `perspective(1000px) rotateY(${radX}rad) rotateX(${radY}rad) scale(1.1)`;
+        } else {
+          card.style.transform = `perspective(1000px) rotateY(${radX}rad) rotateX(${radY}rad)`;
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.removeEventListener("mousemove", handleMouse);
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   const projects = [
     {
       id: 0,
@@ -35,16 +67,19 @@ export default function Projects() {
   ];
 
   return (
-    <main className="p-8 flex flex-col items-center">
+    <main className="flex flex-col items-center p-8">
       <div className="secondary-colour place-items-start text-3xl font-bold">
         The fun stuff!
       </div>
-      <div className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
+      <div
+        ref={projectRef}
+        className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left"
+      >
         {projects.map((item) => (
           <a
             href={item.link}
             key={item.id}
-            className="cards group mt-4 rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-neutral-700 hover:bg-neutral-800/30"
+            className="cards group mt-4 rounded-lg border border-neutral-700 border-transparent bg-neutral-800/30 px-5 py-4 transition-colors"
           >
             <h2 className={`mb-3.5 mt-0 text-2xl font-semibold underline`}>
               {item.title}{" "}

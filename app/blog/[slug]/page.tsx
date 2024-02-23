@@ -4,10 +4,7 @@ import getConfig from "next/config";
 import SideBar from "@/components/Sidebar";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
-import {
-  components,
-  config,
-} from "@/markdoc/markdoc";
+import { components, config } from "@/markdoc/markdoc";
 import matter from "gray-matter";
 import MarkdownContent from "@/components/MarkdownContent";
 
@@ -77,7 +74,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className="hidden shrink-0 grow-0 basis-64 sm:flex">
         <SideBar posts={staticParams} />
       </div>
-      <MarkdownContent title={title} date={date} content={reactContent} tableOfContents={tableOfContents} />
+      <MarkdownContent
+        title={title}
+        date={date}
+        content={reactContent}
+        tableOfContents={tableOfContents}
+      />
     </main>
   );
 }

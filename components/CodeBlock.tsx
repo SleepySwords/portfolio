@@ -21,23 +21,24 @@ export function CodeBlock({
   let [copied, setCopied] = React.useState(0);
 
   if (language === "mermaid") {
-    return <pre className="mermaid whitespace-pre-wrap">
-      {children}
-    </pre>
+    return <pre className="mermaid whitespace-pre-wrap">{children}</pre>;
   }
 
   const handleClick = () => {
     navigator.clipboard.writeText(children);
-    setCopied(n => n + 1);
+    setCopied((n) => n + 1);
     setTimeout(() => {
-      setCopied(n => n - 1);
+      setCopied((n) => n - 1);
     }, 1000);
-  }
+  };
 
   return (
     <div className="relative">
-      <div className="flex absolute border rounded p-1.5 border-neutral-700 {}hover:bg-neutral-900 bg-neutral-800 right-2 top-2 text-neutral-300 cursor-pointer transition-colors" onClick={handleClick}>
-        {copied > 0 && <div className="text-xs pr-1">Copied</div>}
+      <div
+        className="{}hover:bg-neutral-900 absolute right-2 top-2 flex cursor-pointer rounded border border-neutral-700 bg-neutral-800 p-1.5 text-neutral-300 transition-colors"
+        onClick={handleClick}
+      >
+        {copied > 0 && <div className="pr-1 text-xs">Copied</div>}
         <HiClipboardCopy />
       </div>
       <pre className={`whitespace-pre-wrap language-${language}`}>

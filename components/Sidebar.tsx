@@ -10,12 +10,12 @@ export default function SideBar({
     <div>
       <ul className="sticky top-36">
         <li className="mb-5 text-2xl font-bold">All blogs</li>
-        { /* HACK: This should probably not be used */ }
+        {/* HACK: This should probably not be used */}
         {posts.map((post, id) => (
           <li key={id}>
             <Link
               href={`/blog/${post.slug}`}
-              className="text-1xl text-white underline transition-colors hover:text-gray-400"
+              className="text-1xl underline transition-colors hover:text-gray-400"
             >
               {post.title}
             </Link>

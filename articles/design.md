@@ -60,4 +60,4 @@ However, it retained the elements of the `elm` structure. Elements that should h
 
 I have kind off changed my mind, I feel like these refactors are good, even if we do come full circle. I have definately learnt a lot more about how to better structure things.
 
-While this obviosuly comes with the caveat that it is much harder to refactor thing the larger a project grows, I still think it was worth it. Let's just chug along and make cool stuff! In the end *design is hard*.
+While this obviosuly comes with the caveat that it is much harder to refactor thing the larger a project grows, I still think it was worth it. Let's just chug along and make cool stuff! In the end _design is hard_.
