@@ -10,15 +10,14 @@ import "./style.css";
 export default function Home() {
   useEffect(() => {
     let timeline = anime.timeline({});
-    const LOGO_DURATION = 1000;
     timeline
       .add({
         targets: ".lines text",
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
-        duration: LOGO_DURATION,
+        duration: 700,
         delay: function (_, i) {
-          return (i * LOGO_DURATION) / 4;
+          return i * 100;
         },
         direction: "alternate",
       })
