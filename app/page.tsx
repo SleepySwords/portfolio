@@ -10,7 +10,7 @@ import "./style.css";
 export default function Home() {
   useEffect(() => {
     let timeline = anime.timeline({});
-    const LOGO_DURATION = 500;
+    const LOGO_DURATION = 1000;
     timeline
       .add({
         targets: ".lines text",
@@ -31,26 +31,26 @@ export default function Home() {
           duration: 400,
           direction: "alternate",
         },
-        "-=200",
+        "-=500",
       )
-      .add(
-        {
-          targets: ".name a",
-          opacity: [0, 1],
-          easing: "easeInOutSine",
-          duration: 300,
-        },
-        "-=200",
-      )
-      .add(
-        {
-          targets: ".logo a",
-          opacity: [0, 1],
-          easing: "easeInOutSine",
-          duration: 300,
-        },
-        "-=200",
-      );
+      //.add(
+      //  {
+      //    targets: ".name a",
+      //    opacity: [0, 1],
+      //    easing: "easeInOutSine",
+      //    duration: 300,
+      //  },
+      //  "-=200",
+      //)
+      //.add(
+      //  {
+      //    targets: ".logo a",
+      //    opacity: [0, 1],
+      //    easing: "easeInOutSine",
+      //    duration: 300,
+      //  },
+      //  "-=200",
+      //);
   }, []);
   return (
     <main className="flex flex-grow flex-col items-center justify-between">
@@ -97,20 +97,20 @@ export default function Home() {
             </g>
           </svg>
           <div className="name mb-5 mt-20">
-            <a className="text-xl font-bold text-secondary opacity-0">
+            <a className="text-xl font-bold text-secondary opacity-1">
               SleepySwords
             </a>
           </div>
           <div className="logo mb-32 mt-10 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
             <Link
               href="https://github.com/sleepySwords/"
-              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-0 transition-colors hover:text-gray-100`}
+              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-1 transition-colors hover:text-gray-100`}
             >
               <FaGithub />
             </Link>
             <Link
               href="mailto:admin@sleepyswords.dev"
-              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-0 transition-colors hover:text-gray-100`}
+              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-1 transition-colors hover:text-gray-100`}
             >
               <MdEmail />
             </Link>
