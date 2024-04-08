@@ -1,7 +1,7 @@
 export default function Navbar() {
   return (
     // <nav className="fixed flex items-center w-11/12 justify-between flex-wrap">
-    <nav className="background-colour sticky top-0 z-10 w-full">
+    <nav className="sticky top-0 z-10 w-full bg-light dark:bg-dark">
       <div className="block flex w-auto w-full flex-grow items-center p-8">
         <div className="flex-grow">
           <a href="/" className="mt-0 block inline-block font-bold">

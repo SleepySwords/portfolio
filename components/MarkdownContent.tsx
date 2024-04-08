@@ -32,15 +32,18 @@ export default function MarkdownContent({
     mermaid.contentLoaded();
   }, []);
 
+  const duration = 600;
+
   useEffect(() => {
     anime({
       targets: "#content .main",
       translateY: [100, 0],
       opacity: [0, 1],
-      easing: "easeInOutCubic",
-      duration: 1000,
+      easing: "easeOutQuad",
+      //easing: "easeInOutQuad",
+      duration,
       delay: function (_, i) {
-        return i * 250;
+        return i * 100;
       },
     });
   }, []);

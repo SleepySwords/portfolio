@@ -25,7 +25,7 @@ export default function TableOfContents({ tableOfContents, current }: any) {
                 <div className="flex">
                   <div
                     className={
-                      "secondary-bg-colour my-[0.050rem] mr-3 rounded p-1 transition-opacity " +
+                      "my-[0.050rem] mr-3 rounded bg-secondary p-1 transition-opacity " +
                       textColour
                     }
                   ></div>

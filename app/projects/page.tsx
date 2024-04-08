@@ -26,11 +26,11 @@ export default function Projects() {
     }
   }
 
-  useEffect(() => {
-    window.removeEventListener("mousemove", handleMouse);
-    window.addEventListener("mousemove", handleMouse, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
+  //useEffect(() => {
+  //  window.removeEventListener("mousemove", handleMouse);
+  //  window.addEventListener("mousemove", handleMouse, { passive: true });
+  //  return () => window.removeEventListener("mousemove", handleMouse);
+  //}, []);
 
   const projects = [
     {
@@ -68,7 +68,7 @@ export default function Projects() {
 
   return (
     <main className="flex flex-col items-center p-8">
-      <div className="secondary-colour place-items-start text-3xl font-bold">
+      <div className="place-items-start text-3xl font-bold text-secondary">
         The fun stuff!
       </div>
       <div
@@ -79,7 +79,7 @@ export default function Projects() {
           <a
             href={item.link}
             key={item.id}
-            className="cards group mt-4 rounded-lg border border-neutral-700 border-transparent bg-neutral-800/30 px-5 py-4 transition-colors"
+            className="cards group mt-4 rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-neutral-700 hover:bg-neutral-800/30"
           >
             <h2 className={`mb-3.5 mt-0 text-2xl font-semibold underline`}>
               {item.title}{" "}

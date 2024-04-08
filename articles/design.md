@@ -54,6 +54,12 @@ Based on the `Component` architecture laid out in the ratatui documentation. The
 
 However, it retained the elements of the `elm` structure. Elements that should have been shared in the first place, such as the `tasklist` and `completed list` index which are also accessed by a viewer component are now stored in the `App`. It was previously passed around using `Rc<RefCell>` which was significantly more ugly. So that is a plus, I guess?
 
+# Refactor 3 (hopefully the finale)
+
+We have come full circle, going back to the approach found in the problem. Moving back to what is basically the `StackLayout`, but now it is called a `ScreenManager`. It still contains remenents from the past refactors. For example, `PostEvent`'s is still the way to communicate to the `ScreenManager` to push or pop a certain overlay.
+
+I also kept the centralising of data and input, there is still no `Rc<RefCell` to be found in this application. Thankfully, we were rid of the `Overlay` enum that basically needed to be added to when adding a new overlay type. Now we just use a `Box<dyn Component>` to allow for more flexibility. While I'm still not sure what will happen with the whole `PostEvent` situation (these can be easily lost), I'm know very happy with the overall design of this App. And it only took 3 rewrites...
+
 # Full circle
 
 ~~I've come to start thinking if I've just come full circle. With every iteration, it seems more and more meaningless to worry about how the `Overlays` are actually implemented and to just focus on adding new features. It might be better to not always just overengineer things and really only consider refactoring when an issue occurs.~~

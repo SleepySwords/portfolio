@@ -7,38 +7,20 @@
   --background-rgb: 24, 24, 27;
 }
 
-/* @media (prefers-color-scheme: dark) { */
-/*   :root { */
-/*     --foreground-rgb: 255, 255, 255; */
-/*     --background: 24, 24, 27; */
-/*     --background-end-rgb: 0, 0, 0; */
-/*   } */
-/* } */
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
-  scroll-behavior: smooth;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-.background-colour {
-  background-color: rgb(var(--background-rgb));
+.theme {
+  @apply bg-light;
+  @apply text-dark;
 }
 
-.secondary-colour {
-  color: #ff9997;
-}
-
-.primary-colour {
-  color: #ebbab9;
-}
-
-.secondary-bg-colour {
-  background-color: #ff9997;
+.dark {
+  .dark\:theme {
+    @apply bg-dark;
+    @apply text-light;
+  }
 }
 
 @layer base {
@@ -73,13 +55,3 @@ html {
 .callout p {
   margin: 0;
 }
-
-/* body { */
-/*   color: rgb(var(--foreground-rgb)); */
-/*   background: linear-gradient( */
-/*       to bottom, */
-/*       transparent, */
-/*       rgb(var(--background-end-rgb)) */
-/*     ) */
-/*     rgb(var(--background-start-rgb)); */
-/* } */

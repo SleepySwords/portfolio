@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "@/components/navbar";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // const [theme, setTheme] = useState("dark");
+  // useEffect(() => {
+  // 	let theme = localStorage.getItem("theme");
+  // 	if (theme != null && theme in ["light", "dark"]) {
+  // setTheme(theme)
+  // 	} else {}
+  // }, [theme]);
+
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <Script src="/load.js" />
@@ -28,7 +37,9 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} bg-light text-dark dark:bg-dark dark:text-light`}
+      >
         <div className="flex min-h-screen flex-col">
           <Navbar />
           {children}

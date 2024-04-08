@@ -13,7 +13,7 @@ export default function BlogLayout({
 }) {
   return (
     <main className="justify-top flex flex-col items-center p-8">
-      <div className="secondary-colour place-items-start text-3xl font-bold">
+      <div className="place-items-start text-3xl font-bold text-secondary">
         My ramblings
       </div>
       <div className="mt-10 grid w-10/12 text-left">{children}</div>

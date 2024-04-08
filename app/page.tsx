@@ -10,36 +10,38 @@ import "./style.css";
 export default function Home() {
   useEffect(() => {
     let timeline = anime.timeline({});
+    const LOGO_DURATION = 500;
     timeline
       .add({
         targets: ".lines text",
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
-        duration: 1000,
+        duration: LOGO_DURATION,
         delay: function (_, i) {
-          return i * 250;
+          return (i * LOGO_DURATION) / 4;
         },
         direction: "alternate",
       })
       .add(
         {
           targets: ".lines text",
-          // Looks a bit ugly since it transitions to black
-          // need to wait for animejs 4.0
-          fill: "#ebbab9",
+          fillOpacity: [0, 1],
           stroke: "#ebbab9",
           easing: "easeInOutSine",
-          duration: 500,
+          duration: 400,
           direction: "alternate",
         },
-        "-=500",
+        "-=200",
       )
-      .add({
-        targets: ".name a",
-        opacity: [0, 1],
-        easing: "easeInOutSine",
-        duration: 300,
-      })
+      .add(
+        {
+          targets: ".name a",
+          opacity: [0, 1],
+          easing: "easeInOutSine",
+          duration: 300,
+        },
+        "-=200",
+      )
       .add(
         {
           targets: ".logo a",
@@ -47,7 +49,7 @@ export default function Home() {
           easing: "easeInOutSine",
           duration: 300,
         },
-        "-=300",
+        "-=200",
       );
   }, []);
   return (
@@ -56,9 +58,8 @@ export default function Home() {
         <div className="place-items-center text-center">
           <svg className="lines w-64 lg:w-[450px]">
             <g
-              className="text-5xl font-bold lg:text-8xl"
-              fill="none"
-              stroke="rgb(var(--foreground-rgb))"
+              className="fill-primary stroke-dark text-5xl font-bold dark:stroke-light lg:text-8xl"
+              fillOpacity="0"
               strokeWidth="1"
               style={{
                 strokeDasharray: "250%",
@@ -96,7 +97,7 @@ export default function Home() {
             </g>
           </svg>
           <div className="name mb-5 mt-20">
-            <a className="secondary-colour text-xl font-bold opacity-0">
+            <a className="text-xl font-bold text-secondary opacity-0">
               SleepySwords
             </a>
           </div>
