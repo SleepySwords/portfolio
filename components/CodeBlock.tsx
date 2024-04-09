@@ -18,7 +18,7 @@ export function CodeBlock({
     hljs.highlightAll();
   }, []);
 
-  let [copied, setCopied] = React.useState(0);
+  const [copied, setCopied] = React.useState(0);
 
   if (language === "mermaid") {
     return <pre className="mermaid whitespace-pre-wrap">{children}</pre>;
@@ -35,7 +35,7 @@ export function CodeBlock({
   return (
     <div className="relative">
       <div
-        className="{}hover:bg-neutral-900 absolute right-2 top-2 flex cursor-pointer rounded border border-neutral-700 bg-neutral-800 p-1.5 text-neutral-300 transition-colors"
+        className="absolute right-2 top-2 flex cursor-pointer rounded border border-neutral-700 bg-neutral-800 p-1.5 text-neutral-300 transition-colors hover:bg-neutral-900"
         onClick={handleClick}
       >
         {copied > 0 && <div className="pr-1 text-xs">Copied</div>}

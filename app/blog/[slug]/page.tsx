@@ -14,10 +14,10 @@ const { serverRuntimeConfig } = getConfig();
 // the discussion https://github.com/markdoc/markdoc/discussions/462
 // has a better resolution.
 export async function generateStaticParams() {
-  let files = fs.readdirSync(
+  const files = fs.readdirSync(
     path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles"),
   );
-  let articles = await Promise.all(
+  const articles = await Promise.all(
     files.map(async (post) => {
       const slug = post.replace(".md", "");
       const { title, date } = await getMarkdocContent(slug);
@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 }
 
 async function getMarkdocContent(slug: string) {
-  let file = fs.readFileSync(
+  const file = fs.readFileSync(
     path.join(
       serverRuntimeConfig.PROJECT_ROOT,
       "./articles/".concat(slug, ".md"),
@@ -37,10 +37,10 @@ async function getMarkdocContent(slug: string) {
     "utf-8",
   );
 
-  let { title, date } = matter(file).data;
+  const { title, date } = matter(file).data;
 
-  let ast = Markdoc.parse(file);
-  let content = Markdoc.transform(ast, config);
+  const ast = Markdoc.parse(file);
+  const content = Markdoc.transform(ast, config);
 
   return { content, ast, title, date };
 }
@@ -55,7 +55,7 @@ function extractHeadings(node: any, sections: any[] = []) {
       sections.push(section);
     }
     if (node.children) {
-      for (let n of node.children) {
+      for (const n of node.children) {
         extractHeadings(n, sections);
       }
     }

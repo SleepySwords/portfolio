@@ -16,8 +16,8 @@ export default function Callout({
   children,
   type,
 }: {
-  title: String;
-  children: String;
+  title: string;
+  children: string;
   type: keyof typeof data;
 }) {
   return (

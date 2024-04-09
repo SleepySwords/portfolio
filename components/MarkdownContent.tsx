@@ -11,7 +11,7 @@ export default function MarkdownContent({
   content,
   tableOfContents,
 }: {
-  title: String;
+  title: string;
   date: Date;
   content: React.ReactNode;
   tableOfContents: any;
@@ -40,7 +40,6 @@ export default function MarkdownContent({
       translateY: [100, 0],
       opacity: [0, 1],
       easing: "easeOutQuad",
-      //easing: "easeInOutQuad",
       duration,
       delay: function (_, i) {
         return i * 100;
@@ -51,13 +50,13 @@ export default function MarkdownContent({
   useEffect(() => {
     function onScroll() {
       if (ref.current) {
-        let height = window.document
+        const height = window.document
           .getElementsByTagName("nav")[0]
           .getBoundingClientRect().bottom;
-        let elements = ref.current.getElementsByTagName("h1");
+        const elements = ref.current.getElementsByTagName("h1");
         for (let i = 0; i < elements.length; i++) {
-          let elem = elements[elements.length - i - 1];
-          let box = elem.getBoundingClientRect();
+          const elem = elements[elements.length - i - 1];
+          const box = elem.getBoundingClientRect();
           if (box.top - 50 < height) {
             console.log(elem.id);
             setCurrentElem(elem.id);

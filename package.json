@@ -10,6 +10,14 @@
     "prettier": "prettier . --write"
   },
   "dependencies": {
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@markdoc/markdoc": "^0.3.5",
     "@markdoc/next.js": "^0.3.5",
     "@types/animejs": "^3.1.12",
@@ -21,10 +29,6 @@
     "mathjax": "^3.2.2",
     "mermaid": "^10.6.1",
     "next": "^14.0.2",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.7",
-    "prism-react-renderer": "^2.1.0",
-    "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0"
@@ -33,11 +37,22 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.0.1",
-    "postcss": "^8",
+    "eslint-config-next": "^14.1.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "firebase-tools": "^13.6.0",
+    "postcss": "^8.4.38",
+    "postcss-nested": "^6.0.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "prism-react-renderer": "^2.1.0",
+    "prismjs": "^1.29.0",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5.4.2"
   }
 }
