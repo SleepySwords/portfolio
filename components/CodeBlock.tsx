@@ -1,11 +1,11 @@
-"use client"!;
+"use client";
 
-import hljs from "highlight.js";
-import { useEffect } from "react";
 import "highlight.js/styles/github-dark.css";
 import { HiClipboardCopy } from "react-icons/hi";
 
 import * as React from "react";
+import { useEffect } from "react";
+import hljs from "highlight.js";
 
 export function CodeBlock({
   children,
@@ -14,11 +14,15 @@ export function CodeBlock({
   children: string;
   "data-language": string;
 }) {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
   const [copied, setCopied] = React.useState(0);
+  const ref = React.useRef(null);
+
+  useEffect(() => {
+    console.log(ref.current);
+    if (ref.current) {
+      hljs.highlightElement(ref.current);
+    }
+  }, []);
 
   if (language === "mermaid") {
     return <pre className="mermaid whitespace-pre-wrap">{children}</pre>;
@@ -43,7 +47,8 @@ export function CodeBlock({
       </div>
       <pre className={`whitespace-pre-wrap language-${language}`}>
         <code
-          className={`language-${language} hljs overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
+          ref={ref}
+          className={`language-${language} overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
           style={{ overflowWrap: "anywhere" }}
         >
           {children}

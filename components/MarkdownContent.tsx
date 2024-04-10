@@ -58,7 +58,6 @@ export default function MarkdownContent({
           const elem = elements[elements.length - i - 1];
           const box = elem.getBoundingClientRect();
           if (box.top - 50 < height) {
-            console.log(elem.id);
             setCurrentElem(elem.id);
             return;
           }
