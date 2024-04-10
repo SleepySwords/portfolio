@@ -71,7 +71,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
-      {title}
+      <MarkdownContent
+        title={title}
+        date={date}
+        content={reactContent}
+        tableOfContents={tableOfContents}
+      />
     </main>
   );
 }
