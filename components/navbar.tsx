@@ -1,5 +1,6 @@
+"use client";
 import { Theme, ThemeContext } from "@/app/theme";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdNightlightRound, MdOutlineWbSunny } from "react-icons/md";
 import { FaGears } from "react-icons/fa6";
 import Link from "next/link";
@@ -22,26 +23,30 @@ function NavbarLink({
 }
 
 export default function Navbar() {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const [theme, setThemeIcon] = useState<Theme>(Theme.Auto);
 
   function onThemeClick() {
     const keys = Object.values(Theme);
-    setTheme(keys[(keys.indexOf(theme) + 1) % keys.length]);
+    const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
+    setThemeIcon(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.dataset.theme = newTheme;
   }
+
+  useEffect(() => {
+    const th = localStorage.getItem("theme");
+    if (th == "dark") {
+      setThemeIcon(Theme.Dark);
+    } else if (th == "light") {
+      setThemeIcon(Theme.Light);
+    } else {
+      setThemeIcon(Theme.Auto);
+    }
+  }, []);
 
   function navbarColour() {
-    console.log(theme);
-    switch (theme) {
-      case Theme.Auto:
-        return "bg-light dark:bg-dark";
-      case Theme.Dark:
-        return "bg-dark";
-      case Theme.Light:
-        return "bg-light";
-    }
+    return "bg-[color:var(--background)]";
   }
-
-  console.log(theme);
 
   return (
     // <nav className="fixed flex items-center w-11/12 justify-between flex-wrap">

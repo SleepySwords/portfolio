@@ -3,13 +3,11 @@ import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 import anime from "animejs";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { MdEmail } from "react-icons/md";
 import "./style.css";
-import { Theme, ThemeContext } from "./theme";
 
 export default function Home() {
-  const { theme } = useContext(ThemeContext);
   useEffect(() => {
     const timeline = anime.timeline({});
     timeline
@@ -54,14 +52,7 @@ export default function Home() {
     //);
   }, []);
   function strokeColour() {
-    switch (theme) {
-      case Theme.Auto:
-        return "stroke-dark dark:stroke-light";
-      case Theme.Dark:
-        return "stroke-light";
-      case Theme.Light:
-        return "stroke-dark";
-    }
+    return "stroke-[color:var(--foreground)]";
   }
   return (
     <main className="flex flex-grow flex-col items-center justify-between">

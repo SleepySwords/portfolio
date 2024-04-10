@@ -1,10 +1,7 @@
-"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "@/components/navbar";
-import { useEffect, useState } from "react";
-import { Theme, ThemeContext } from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,38 +15,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState(Theme.Auto);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme != null) {
-      console.log("ok: " + theme);
-      if (theme == "dark") {
-        setTheme(Theme.Dark);
-      } else if (theme == "light") {
-        setTheme(Theme.Light);
-      } else {
-        setTheme(Theme.Auto);
-      }
-    }
-  }, []);
-
-  function backgroundAndText() {
-    switch (theme) {
-      case Theme.Auto:
-        return "bg-light text-dark dark:bg-dark dark:text-light";
-      case Theme.Dark:
-        return "bg-dark text-light";
-      case Theme.Light:
-        return "bg-light text-dark";
-    }
-  }
-
   return (
     <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <Script src="/load.js" />
+        {/* eslint-disable-next-line */}
+        <script src="/theme.js"></script>
         <Script
           id="MathJax-script"
           async
@@ -58,23 +30,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} transition-colors ${backgroundAndText()}`}
+        className={`${inter.className} bg-[color:var(--background)] text-[color:var(--foreground)] transition-colors`}
       >
-        <ThemeContext.Provider
-          value={{
-            theme: theme,
-            setTheme: (theme) => {
-              localStorage.setItem("theme", theme);
-              console.log("test");
-              setTheme(theme);
-            },
-          }}
-        >
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            {children}
-          </div>
-        </ThemeContext.Provider>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -12,11 +12,9 @@ import {
 } from "react-icons/si";
 import Link from "next/link";
 import Image from "next/image";
-import { Theme, ThemeContext } from "../theme";
 
 export default function Projects() {
   const projectRef = useRef<HTMLDivElement>(null);
-  const { theme } = useContext(ThemeContext);
 
   function handleMouse(event: MouseEvent) {
     const x = event.clientX;
@@ -94,7 +92,6 @@ export default function Projects() {
       title: "Do Todo",
       description: "Do your todos with this Rust TUI client!",
       link: "https://github.com/SleepySwords/do_todo",
-      //icons: [faRust, faReact],
       icons: [
         <FaRust key="0" />,
         <Image
@@ -130,14 +127,7 @@ export default function Projects() {
   ];
 
   function backgroundAndBorder() {
-    switch (theme) {
-      case Theme.Auto:
-        return "hover:border-neutral-300 hover:bg-neutral-100/90 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/90";
-      case Theme.Dark:
-        return "hover:border-neutral-700 hover:bg-neutral-800/90";
-      case Theme.Light:
-        return "hover:border-neutral-300 hover:bg-neutral-100/90";
-    }
+    return "hover:border-[color:var(--projectBorder)] hover:bg-[color:var(--projectBackground)]";
   }
 
   return (
