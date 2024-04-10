@@ -2,7 +2,7 @@
 import { Theme } from "@/app/theme";
 import { useEffect, useState } from "react";
 import { MdNightlightRound, MdOutlineWbSunny } from "react-icons/md";
-import { FaGear, FaGears } from "react-icons/fa6";
+import { FaGears } from "react-icons/fa6";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
@@ -34,10 +34,12 @@ export default function Navbar() {
   }, []);
 
   function onThemeClick() {
-    const keys = Object.keys(Theme);
-    if (theme) {
-      const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
-      setTheme(newTheme);
+    if (theme == "auto") {
+      setTheme("dark");
+    } else if (theme == "dark") {
+      setTheme("light");
+    } else {
+      setTheme("auto");
     }
   }
 
