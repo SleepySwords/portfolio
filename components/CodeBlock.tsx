@@ -17,12 +17,12 @@ export function CodeBlock({
   const [copied, setCopied] = React.useState(0);
   const ref = React.useRef(null);
 
-  useEffect(() => {
-    console.log(ref.current);
-    if (ref.current) {
-      hljs.highlightElement(ref.current);
-    }
-  }, []);
+  //useEffect(() => {
+  //  console.log(ref.current);
+  //  if (ref.current) {
+  //    hljs.highlightElement(ref.current);
+  //  }
+  //}, []);
 
   if (language === "mermaid") {
     return <pre className="mermaid whitespace-pre-wrap">{children}</pre>;

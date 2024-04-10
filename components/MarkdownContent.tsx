@@ -25,12 +25,12 @@ export default function MarkdownContent({
     }
   }, []);
 
-  useEffect(() => {
-    // FIXME: This does not work with two mermaid blocks
-    // However, does work when building?
-    mermaid.initialize({ startOnLoad: true });
-    mermaid.contentLoaded();
-  }, []);
+  //useEffect(() => {
+  //  // FIXME: This does not work with two mermaid blocks
+  //  // However, does work when building?
+  //  mermaid.initialize({ startOnLoad: true });
+  //  mermaid.contentLoaded();
+  //}, []);
 
   const duration = 600;
 

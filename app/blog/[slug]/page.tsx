@@ -71,6 +71,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
+      <div className="hidden shrink-0 grow-0 basis-64 sm:flex">
+        <SideBar posts={staticParams} />
+      </div>
       <MarkdownContent
         title={title}
         date={date}
