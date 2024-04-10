@@ -12,8 +12,10 @@ export default function TableOfContents({ tableOfContents, current }: any) {
         <ul className="list-inside space-y-2 underline">
           {items.map((item) => {
             const href = `#${item.title}`;
-            const textColour =
+            const textColour2 =
               current == item.title ? "opacity-1" : "opacity-0";
+            const textColour =
+              current == item.title ? "text-secondary" : "white";
             const level =
               item.level === 2
                 ? "pl-4"
@@ -26,12 +28,12 @@ export default function TableOfContents({ tableOfContents, current }: any) {
                   <div
                     className={
                       "my-[0.050rem] mr-3 rounded bg-secondary p-1 transition-opacity " +
-                      textColour
+                      textColour2
                     }
                   ></div>
                   <a
                     href={href}
-                    className="underline transition-colors hover:text-gray-400"
+                    className={`underline transition-colors hover:text-gray-400 ${textColour}`}
                   >
                     {item.title}
                   </a>
