@@ -2,8 +2,9 @@
 import { Theme } from "@/app/theme";
 import { useEffect, useState } from "react";
 import { MdNightlightRound, MdOutlineWbSunny } from "react-icons/md";
-import { FaGears } from "react-icons/fa6";
+import { FaGear, FaGears } from "react-icons/fa6";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 function NavbarLink({
   children,
@@ -23,26 +24,20 @@ function NavbarLink({
 }
 
 export default function Navbar() {
-  const [theme, setThemeIcon] = useState<Theme>(Theme.Auto);
+  const { theme, setTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function onThemeClick() {
     const keys = Object.values(Theme);
     const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
-    setThemeIcon(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.dataset.siteTheme = newTheme;
+    setTheme(newTheme);
   }
-
-  useEffect(() => {
-    const th = localStorage.getItem("theme");
-    if (th == "dark") {
-      setThemeIcon(Theme.Dark);
-    } else if (th == "light") {
-      setThemeIcon(Theme.Light);
-    } else {
-      setThemeIcon(Theme.Auto);
-    }
-  }, []);
 
   function navbarColour() {
     return "bg-[color:var(--background)]";
@@ -65,7 +60,9 @@ export default function Navbar() {
             className="cursor-pointer select-none px-2 transition-colors hover:text-gray-400"
             onClick={onThemeClick}
           >
-            {theme == Theme.Dark ? (
+            {!mounted ? (
+              <FaGears />
+            ) : theme == Theme.Dark ? (
               <MdNightlightRound />
             ) : theme == Theme.Light ? (
               <MdOutlineWbSunny />
