@@ -8,4 +8,5 @@ module.exports = withMarkdoc({ mode: "static", schemaPath: "./markdoc" })({
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
+  compress: false,
 });
