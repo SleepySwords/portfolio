@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const staticParams = await generateStaticParams();
   const { content, ast, title, date } = await getMarkdocContent(params.slug);
   const tableOfContents = extractHeadings(ast);
-  const reactContent = Markdoc.renderers.react(content, React, { components });
+  const reactContent = Markdoc.renderers.react(content, React, {});
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>

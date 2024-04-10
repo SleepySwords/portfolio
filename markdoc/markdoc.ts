@@ -40,10 +40,23 @@ export const callout = {
   },
 };
 
-export const components = {};
+export const components = {
+  MarkdownLink: MarkdownLink,
+  MarkdownList: MarkdownList,
+  CodeBlock: CodeBlock,
+  Heading: Heading,
+  Callout: Callout,
+};
 
 export const config: Config = {
-  nodes: {},
+  nodes: {
+    fence,
+    link,
+    list,
+    heading,
+  },
   variables: {},
-  tags: {},
+  tags: {
+    callout,
+  },
 };
