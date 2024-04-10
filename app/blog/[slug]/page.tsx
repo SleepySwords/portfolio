@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
-      {title} {content}
+      {title}
     </main>
   );
 }

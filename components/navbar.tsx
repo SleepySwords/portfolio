@@ -1,6 +1,6 @@
 "use client";
-import { Theme, ThemeContext } from "@/app/theme";
-import { useContext, useEffect, useState } from "react";
+import { Theme } from "@/app/theme";
+import { useEffect, useState } from "react";
 import { MdNightlightRound, MdOutlineWbSunny } from "react-icons/md";
 import { FaGears } from "react-icons/fa6";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function Navbar() {
     const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
     setThemeIcon(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.dataset.theme = newTheme;
+    document.documentElement.dataset.siteTheme = newTheme;
   }
 
   useEffect(() => {
