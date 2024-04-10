@@ -34,9 +34,11 @@ export default function Navbar() {
   }, []);
 
   function onThemeClick() {
-    const keys = Object.values(Theme);
-    const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
-    setTheme(newTheme);
+    const keys = Object.keys(Theme);
+    if (theme) {
+      const newTheme = keys[(keys.indexOf(theme) + 1) % keys.length];
+      setTheme(newTheme);
+    }
   }
 
   function navbarColour() {
