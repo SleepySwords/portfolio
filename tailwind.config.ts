@@ -18,9 +18,10 @@ const config: Config = {
         dark: "#18181b",
         primary: "#ebbab9",
         secondary: "#ff9997",
+        third: "#eb477e",
       },
     },
   },
-  plugins: []
+  plugins: [],
 };
 export default config;

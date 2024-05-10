@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <title>SleepySwords</title>
         <Script src="/load.js" />
         {/* eslint-disable-next-line */}
         <Script

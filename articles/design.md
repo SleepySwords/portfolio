@@ -58,7 +58,7 @@ However, it retained the elements of the `elm` structure. Elements that should h
 
 We have come full circle, going back to the approach found in the problem. Moving back to what is basically the `StackLayout`, but now it is called a `ScreenManager`. It still contains remenents from the past refactors. For example, `PostEvent`'s is still the way to communicate to the `ScreenManager` to push or pop a certain overlay.
 
-I also kept the centralising of data and input, there is still no `Rc<RefCell` to be found in this application. Thankfully, we were rid of the `Overlay` enum that basically needed to be added to when adding a new overlay type. Now we just use a `Box<dyn Component>` to allow for more flexibility. While I'm still not sure what will happen with the whole `PostEvent` situation (these can be easily lost), I'm know very happy with the overall design of this App. And it only took 3 rewrites...
+I also kept the centralising of data and input, there is still no `Rc<RefCell>` to be found in this application. Thankfully, we were rid of the `Overlay` enum that basically needed to be added to when adding a new overlay type. Now we just use a `Box<dyn Component>` to allow for more flexibility. While I'm still not sure what will happen with the whole `PostEvent` situation (these can be easily lost), I'm know very happy with the overall design of this App. And it only took 3 rewrites...
 
 # Full circle
 

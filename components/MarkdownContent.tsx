@@ -1,9 +1,9 @@
 "use client";
 
+import anime from "animejs";
 import React, { useEffect, useRef, useState } from "react";
 import TableOfContents from "./TableOfContents";
 import mermaid from "mermaid";
-import anime from "animejs";
 
 export default function MarkdownContent({
   title,
@@ -25,12 +25,12 @@ export default function MarkdownContent({
     }
   }, []);
 
-  //useEffect(() => {
-  //  // FIXME: This does not work with two mermaid blocks
-  //  // However, does work when building?
-  //  mermaid.initialize({ startOnLoad: true });
-  //  mermaid.contentLoaded();
-  //}, []);
+  useEffect(() => {
+    // FIXME: This does not work with two mermaid blocks
+    // However, does work when building?
+    mermaid.initialize({ startOnLoad: true });
+    mermaid.contentLoaded();
+  }, []);
 
   const duration = 600;
 

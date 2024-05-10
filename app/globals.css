@@ -40,18 +40,6 @@ html {
   }
 }
 
-.theme {
-  @apply bg-light;
-  @apply text-dark;
-}
-
-.dark {
-  .dark\:theme {
-    @apply bg-dark;
-    @apply text-light;
-  }
-}
-
 @layer base {
   h1,
   h2,

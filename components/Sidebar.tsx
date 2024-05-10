@@ -8,7 +8,7 @@ export default function SideBar({
 }) {
   return (
     <div>
-      <ul className="sticky top-36">
+      <ul className="sticky top-36 mr-5">
         <li className="mb-5 text-2xl font-bold">All blogs</li>
         {/* HACK: This should probably not be used */}
         {posts.map((post, id) => (
