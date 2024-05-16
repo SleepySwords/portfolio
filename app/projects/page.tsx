@@ -17,7 +17,7 @@ import styled from "@emotion/styled";
 const SkewedBackground = styled.div`
   width: 100px;
   height: 100px;
-  background-color: #ff658c;
+  background-color: #dd2251;
   transform: skewX(0deg) scaleX(0.56) scaleY(0.4) translate(-22px, -70px)
     rotate(20deg);
   z-index: -1;
