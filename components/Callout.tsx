@@ -23,8 +23,7 @@ export default function Callout({
   return (
     <div
       className="callout mb-4 mt-4 flex place-items-center
-    rounded-sm border bg-gray-100 p-5 text-dark
-    data-[theme=dark]:border-neutral-700 data-[theme=dark]:bg-neutral-800 data-[theme=dark]:text-light"
+    rounded-sm border border-[color:var(--projectBorder)] bg-[color:var(--projectBackground)] p-5 text-[color:var(--foreground)]"
     >
       {data[type]}
       <div className="ml-4">

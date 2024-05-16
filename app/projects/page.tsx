@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import anime from "animejs";
 import { FaMarkdown, FaReact, FaRust } from "react-icons/fa";
 import {
@@ -12,6 +12,17 @@ import {
 } from "react-icons/si";
 import Link from "next/link";
 import Image from "next/image";
+import styled from "@emotion/styled";
+
+const SkewedBackground = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: #ff658c;
+  transform: skewX(0deg) scaleX(0.56) scaleY(0.4) translate(-22px, -70px)
+    rotate(20deg);
+  z-index: -1;
+  position: absolute;
+`;
 
 export default function Projects() {
   const projectRef = useRef<HTMLDivElement>(null);
@@ -132,9 +143,11 @@ export default function Projects() {
 
   return (
     <main className="flex flex-col items-center p-8">
-      <div className="place-items-start text-3xl font-bold text-secondary">
+      <div className="place-items-start text-3xl font-bold">
+        {/* text-secondary */}
         The fun stuff!
       </div>
+      <SkewedBackground />
       <div
         ref={projectRef}
         className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left"
