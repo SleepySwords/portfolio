@@ -143,11 +143,10 @@ export default function Projects() {
 
   return (
     <main className="flex flex-col items-center p-8">
-      <div className="place-items-start text-3xl font-bold">
-        {/* text-secondary */}
+      <div className="place-items-start text-3xl font-bold text-secondary">
         The fun stuff!
       </div>
-      <SkewedBackground />
+      {/*<SkewedBackground />*/}
       <div
         ref={projectRef}
         className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left"
