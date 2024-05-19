@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { Tooltip } from "react-tooltip";
 
 const SkewedBackground = styled.div`
   width: 100px;
@@ -23,6 +24,14 @@ const SkewedBackground = styled.div`
   z-index: -1;
   position: absolute;
 `;
+
+interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  link: string;
+  icon: JSX.Element;
+}
 
 export default function Projects() {
   const projectRef = useRef<HTMLDivElement>(null);
@@ -83,48 +92,112 @@ export default function Projects() {
       });
   });
 
-  const projects = [
-    {
-      id: 0,
-      title: "DreamBerdC",
-      description: "First compiler using LLVM, why not make it perfect?",
-      link: "https://github.com/SleepySwords/DreamBerdc",
-      icons: [<FaRust key="0" />, <SiLlvm key="1" />],
+  const tools: { [key: string]: Tool } = {
+    rust: {
+      id: "rust",
+      icon: <FaRust />,
+      name: "Rust",
+      description:
+        "A nice to use programming language with emphesis on ownership and memory safety",
+      link: "https://www.rust-lang.org/",
     },
-    {
-      id: 1,
-      title: "Dotfiles",
-      description: "My dotfiles that I use on my daily machine.",
-      link: "https://github.com/SleepySwords/dotfiles",
-      icons: [<SiLua key="0" />, <SiNeovim key="1" />],
+    llvm: {
+      id: "llvm",
+      icon: <SiLlvm />,
+      name: "LLVM",
+      description:
+        "A compiler framework that helps to build languages for many different platforms.",
+      link: "https://llvm.org/",
     },
-    {
-      id: 2,
-      title: "Do Todo",
-      description: "Do your todos with this Rust TUI client!",
-      link: "https://github.com/SleepySwords/do_todo",
-      icons: [
-        <FaRust key="0" />,
+    lua: {
+      id: "lua",
+      icon: <SiLua />,
+      name: "Lua",
+      description:
+        "A lightweight language focusing on scripting and configuration.",
+      link: "https://www.lua.org/",
+    },
+    neovim: {
+      id: "neovim",
+      icon: <SiNeovim />,
+      name: "Neovim",
+      description:
+        "An editor that has a primary focus on configuration and customisability.",
+      link: "https://neovim.io/",
+    },
+    ratatui: {
+      id: "ratatui",
+      icon: (
         <Image
           key="1"
           width={15}
           height={15}
           src="https://ratatui.rs/_astro/hero-dark.sdDaGsSQ_Z10Cldg.webp"
           alt="ratatui"
-        />,
-      ],
+        />
+      ),
+      name: "Ratatui",
+      description: "A tui framework built in Rust!",
+      link: "https://ratatui.rs/",
+    },
+    haskell: {
+      id: "haskell",
+      icon: <SiHaskell />,
+      name: "Haskell",
+      description: "A purely functional programming language",
+      link: "https://www.haskell.org/",
+    },
+    react: {
+      id: "react",
+      icon: <FaReact />,
+      name: "React",
+      description: "A framework for building websites through components",
+      link: "https://react.dev/",
+    },
+    tailwind: {
+      id: "tailwind",
+      icon: <SiTailwindcss />,
+      name: "Tailwind CSS",
+      description: "A framework aimed to make styling a breeze",
+      link: "https://tailwindcss.com/",
+    },
+    markdoc: {
+      id: "markdoc",
+      icon: <FaMarkdown />,
+      name: "Markdoc",
+      description: "Convert markdoc files into a react tree for pretty blogs.",
+      link: "https://markdoc.dev/",
+    },
+  };
+
+  const projects = [
+    {
+      id: 0,
+      title: "DreamBerdC",
+      description: "First compiler using LLVM, why not make it perfect?",
+      link: "https://github.com/SleepySwords/DreamBerdc",
+      icons: [tools.rust, tools.llvm],
+    },
+    {
+      id: 1,
+      title: "Dotfiles",
+      description: "My dotfiles that I use on my daily machine.",
+      link: "https://github.com/SleepySwords/dotfiles",
+      icons: [tools.lua, tools.neovim],
+    },
+    {
+      id: 2,
+      title: "Do Todo",
+      description: "Do your todos with this Rust TUI client!",
+      link: "https://github.com/SleepySwords/do_todo",
+      icons: [tools.rust, tools.ratatui],
     },
     {
       id: 3,
       title: "Portfolio",
       description: "The website that you are currently looking at!",
       link: "https://github.com/SleepySwords/sleepyswords.github.io",
-      //icons: [faReact],
-      icons: [
-        <FaReact key="0" />,
-        <SiTailwindcss key="1" />,
-        <FaMarkdown key="2" />,
-      ],
+      icons: [tools.react, tools.tailwind, tools.markdoc],
     },
     {
       id: 4,
@@ -132,8 +205,7 @@ export default function Projects() {
       description:
         "Solutions to previous advent of code that I wrote (with some help)",
       link: "https://github.com/SleepySwords/advent_of_code",
-      //icons: [faRust],
-      icons: [<FaRust key="0" />, <SiHaskell key="1" />],
+      icons: [tools.rust, tools.haskell],
     },
   ];
 
@@ -147,6 +219,21 @@ export default function Projects() {
         The fun stuff!
       </div>
       {/*<SkewedBackground />*/}
+      {Object.entries(tools).map((value) => {
+        const [id, tool] = value;
+        return (
+          <Tooltip
+            anchorSelect={`.${tool.id}`}
+            place="top"
+            offset={20}
+            key={id}
+            style={{ zIndex: 10, backgroundColor: "#333333", width: "24rem" }}
+          >
+            <div className="font-bold">{tool.name}</div>
+            <div>{tool.description}</div>
+          </Tooltip>
+        );
+      })}
       <div
         ref={projectRef}
         className="mt-10 grid text-center sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left"
@@ -154,7 +241,7 @@ export default function Projects() {
         {projects.map((item) => (
           <div
             key={item.id}
-            className="mt-4 h-28 overflow-hidden hover:z-0 hover:overflow-visible"
+            className="mt-4 h-28 overflow-hidden hover:overflow-visible"
           >
             <div
               className={`cards group rounded-lg border border-transparent px-5 py-4 transition-colors transition-transform hover:scale-110 ${backgroundAndBorder()}`}
@@ -173,13 +260,14 @@ export default function Projects() {
               <div className="font-semibold">Skills</div>
               <div className={`mt-2 flex`}>
                 {item.icons.map((icon, i) => (
-                  <div
-                    className="icon mr-2 transition-none"
-                    style={{ transformOrigin: "bottom center" }}
-                    key={i}
-                  >
-                    {icon}
-                  </div>
+                  <Link key={i} className={`${icon.id} mr-2`} href={icon.link}>
+                    <div
+                      className="icon transition-none"
+                      style={{ transformOrigin: "bottom center" }}
+                    >
+                      {icon.icon}
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>
