@@ -111,7 +111,7 @@ export default function Home() {
               <FaGithub />
             </Link>
             <Link
-              href="mailto:admin@sleepyswords.dev"
+              href="mailto:me@sleepyswords.dev"
               className={`opacity-1 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
             >
               <MdEmail />
