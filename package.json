@@ -38,7 +38,6 @@
   },
   "packageManager": "yarn@4.1.1",
   "devDependencies": {
-    "@next/react-dev-overlay": "^14.1.4",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^24.0.10",
     "@types/react": "^19.1.8",
