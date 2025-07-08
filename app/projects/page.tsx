@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import anime from "animejs";
+import { JSX, useEffect, useRef } from "react";
+import {createTimeline} from "animejs";
 import { FaMarkdown, FaReact, FaRust } from "react-icons/fa";
 import {
   SiHaskell,
@@ -64,30 +64,28 @@ export default function Projects() {
   //}, []);
 
   useEffect(() => {
-    const timeline = anime.timeline({
+    const timeline = createTimeline({
       loop: true,
-      easing: "easeInOutQuad",
-      targets: ".icon",
     });
     timeline
-      .add({
+      .add(".icon", {
         scaleX: [1, 1.3],
         scaleY: [1, 0.7],
-        //easing: "easeInOutQuad",
+        easing: "easeInOutQuad",
         duration: 250,
       })
-      .add({
+      .add(".icon", {
         translateY: [0, -6],
         scaleX: [1.3, 0.9],
         scaleY: [0.7, 1.1],
-        //easing: "easeInOutQuad",
+        easing: "easeInOutQuad",
         duration: 250,
       })
-      .add({
+      .add(".icon", {
         translateY: [-6, 0],
         scaleX: [0.9, 1],
         scaleY: [1.1, 1],
-        //easing: "easeInOutQuad",
+        easing: "easeInOutQuad",
         duration: 250,
       });
   });
@@ -210,12 +208,12 @@ export default function Projects() {
   ];
 
   function backgroundAndBorder() {
-    return "hover:border-[color:var(--projectBorder)] hover:bg-[color:var(--projectBackground)]";
+    return "hover:border-(--projectBorder) hover:bg-(--projectBackground)";
   }
 
   return (
     <main className="flex flex-col items-center p-8">
-      <div className="place-items-start text-3xl font-bold text-secondary">
+      <div className="place-items-start text-3xl font-bold text-(--secondary)">
         The fun stuff!
       </div>
       {/*<SkewedBackground />*/}

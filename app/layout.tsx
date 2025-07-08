@@ -31,7 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} bg-[color:var(--background)] text-[color:var(--foreground)] transition-colors`}
+        className={`${inter.className} bg-(--background) text-(--foreground) transition-colors`}
       >
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">

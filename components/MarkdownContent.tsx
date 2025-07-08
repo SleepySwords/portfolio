@@ -1,6 +1,6 @@
 "use client";
 
-import anime from "animejs";
+import {animate} from "animejs";
 import React, { useEffect, useRef, useState } from "react";
 import TableOfContents from "./TableOfContents";
 import mermaid from "mermaid";
@@ -35,8 +35,7 @@ export default function MarkdownContent({
   const duration = 600;
 
   useEffect(() => {
-    anime({
-      targets: "#content .main",
+    animate("#content .main", {
       translateY: [100, 0],
       opacity: [0, 1],
       easing: "easeOutQuad",
@@ -74,7 +73,7 @@ export default function MarkdownContent({
 
   return (
     <>
-      <div ref={ref} id="content" className="content remove-all flex-grow">
+      <div ref={ref} id="content" className="content remove-all grow">
         <div className="main mb-2 text-3xl font-bold opacity-0">{title}</div>
         <div className="main text-m mb-5 text-gray-400 opacity-0">
           {date.toLocaleDateString()}

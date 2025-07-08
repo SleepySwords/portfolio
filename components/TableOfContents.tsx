@@ -15,7 +15,7 @@ export default function TableOfContents({ tableOfContents, current }: any) {
             const textColour2 =
               current == item.title ? "opacity-1" : "opacity-0";
             const textColour =
-              current == item.title ? "text-secondary" : "white";
+              current == item.title ? "text-(--secondary)" : "white";
             const level =
               item.level === 2
                 ? "pl-4"
@@ -27,7 +27,7 @@ export default function TableOfContents({ tableOfContents, current }: any) {
                 <div className="flex">
                   <div
                     className={
-                      "my-[0.050rem] mr-3 rounded bg-secondary p-1 transition-opacity " +
+                      "my-[0.050rem] mr-3 rounded bg-(--secondary) p-1 transition-opacity " +
                       textColour2
                     }
                   ></div>

@@ -44,7 +44,7 @@ export default function Navbar() {
   }
 
   function navbarColour() {
-    return "bg-[color:var(--background)]";
+    return "bg-(--background)";
   }
 
   return (
@@ -52,7 +52,7 @@ export default function Navbar() {
     <nav
       className={`sticky top-0 z-10 w-full ${navbarColour()} transition-colors`}
     >
-      <div className="flex w-full flex-grow items-center justify-between p-8">
+      <div className="flex w-full grow items-center justify-between p-8">
         <Link href="/" className="mt-0 inline-block font-bold">
           ¯\_(ツ)_/¯
         </Link>

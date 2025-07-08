@@ -2,28 +2,26 @@
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
-import anime from "animejs";
+import { createTimeline } from "animejs";
 import { useEffect } from "react";
 import { MdEmail } from "react-icons/md";
 import "./style.css";
 
 export default function Home() {
   useEffect(() => {
-    const timeline = anime.timeline({});
+    const timeline = createTimeline({});
     timeline
-      .add({
-        targets: ".lines text",
+      .add(".lines text", {
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
         duration: 700,
-        delay: function (_, i) {
-          return i * 100;
+        delay: function(_, i) {
+          return i * 150;
         },
         direction: "alternate",
       })
-      .add(
+      .add(".lines text",
         {
-          targets: ".lines text",
           fillOpacity: [0, 1],
           stroke: "#ebbab9",
           easing: "easeInOutSine",
@@ -52,15 +50,15 @@ export default function Home() {
     //);
   }, []);
   function strokeColour() {
-    return "stroke-[color:var(--foreground)]";
+    return "stroke-(--foreground)";
   }
   return (
-    <main className="flex flex-grow flex-col items-center justify-between">
-      <div className="relative flex flex-grow place-items-center p-8">
+    <main className="flex grow flex-col items-center justify-between">
+      <div className="relative flex grow place-items-center p-8">
         <div className="place-items-center text-center">
           <svg className="lines w-64 lg:w-[450px]">
             <g
-              className={`fill-primary text-5xl font-bold lg:text-8xl ${strokeColour()}`}
+              className={`fill-(--primary) text-5xl font-bold lg:text-8xl ${strokeColour()}`}
               fillOpacity="0"
               strokeWidth="1"
               style={{
@@ -99,20 +97,20 @@ export default function Home() {
             </g>
           </svg>
           <div className="name mb-5 mt-20">
-            <a className="opacity-1 text-xl font-bold text-secondary">
+            <a className="opacity-100 text-xl font-bold text-(--secondary)">
               SleepySwords
             </a>
           </div>
           <div className="logo mb-32 mt-10 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
             <Link
               href="https://github.com/sleepySwords/"
-              className={`opacity-1 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              className={`opacity-100 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
             >
               <FaGithub />
             </Link>
             <Link
               href="mailto:me@sleepyswords.dev"
-              className={`opacity-1 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              className={`opacity-100 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
             >
               <MdEmail />
             </Link>
