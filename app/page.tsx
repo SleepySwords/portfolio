@@ -14,9 +14,9 @@ export default function Home() {
       .add(".lines text", {
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
-        duration: 700,
+        duration: 1300,
         delay: function(_, i) {
-          return i * 150;
+          return i * 200;
         },
         direction: "alternate",
       })
@@ -28,7 +28,7 @@ export default function Home() {
           duration: 400,
           direction: "alternate",
         },
-        "-=500",
+        "-=1000",
       );
     //.add(
     //  {
