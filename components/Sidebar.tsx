@@ -10,7 +10,7 @@ export default function SideBar({
     <div>
       <ul className="sticky top-36 mr-5">
         <li className="mb-5 text-2xl font-bold">All blogs</li>
-        {/* HACK: This should probably not be used */}
+        {/* HACK: The order of blogs would not change */}
         {posts.map((post, id) => (
           <li key={id}>
             <Link
