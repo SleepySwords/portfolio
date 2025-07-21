@@ -29,8 +29,11 @@ another lightbulb hit me. After, the fish line exists the exit line. How
 splendid, now my fish shell works perfectly despite living in this quite cursed
 environment.
 
-# The dilemma
-It truly has led me to this dilemma. Am I a person who uses zsh or fish? Is it
-both? If you run `chsh` it says zsh right there. But I actually use fish?!? It
-is probably best to resolve this unforeseen dilemma by fixing this issue
-without a hacky workaround, but that is a problem for a future me.
+So now I am using this hacky workaround. However, neovide complains about not
+being able to nvim, probably because we jump straight into fish on startup.
+
+# Update
+Found out if you add `shell-integration = none` into the ghostty config it
+works the intended way. Not really sure why that happens, perhaps something is
+wrong with the fish shell integration? But being able to remove this hacky
+config was way nicer, now I am able to use neovide freely.
