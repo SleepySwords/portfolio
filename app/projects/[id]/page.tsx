@@ -1,7 +1,6 @@
 import NotFound from "@/app/not-found";
 import { PROJECTS } from "@/app/projects";
 import CustomTextLink from "@/components/CustomLink";
-import Link from "next/link";
 
 export async function generateStaticParams() {
   return PROJECTS.map(f => { return { id: f.id.toString() } })
@@ -20,7 +19,7 @@ export default async function Page({
   }
   return (
     <main className="flex flex-col items-center p-8">
-      <div className="w-8/10">
+      <div className="w-10/12">
         <div className="text-center text-3xl font-bold text-(--third)">
           {project.title}
         </div>

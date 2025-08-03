@@ -36,6 +36,8 @@ export function CodeBlock({
     }, 1000);
   };
 
+  const languageClass = language ? `language-${language}` : ""
+
   return (
     <div className="relative">
       <div
@@ -45,10 +47,10 @@ export function CodeBlock({
         {copied > 0 && <div className="pr-1 text-xs">Copied</div>}
         <HiClipboardCopy />
       </div>
-      <pre className={`whitespace-pre-wrap language-${language}`}>
+      <pre className={`whitespace-pre-wrap ${languageClass}`}>
         <code
           ref={ref}
-          className={`language-${language} overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
+          className={`${languageClass} overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
           style={{ overflowWrap: "anywhere" }}
         >
           {children}
