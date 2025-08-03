@@ -323,6 +323,32 @@ curl --path-as-is -i -s -k -X 'EVAL' \
 
 We can then get the encrypted vote using the img api and directly getting `http://localhost/api/img/2901390`.
 
+```
+curl http://localhost/api/img/2901390
+```
+
 # Combining this
 
 All together we now have all the parts to decrypt the string and get the flag.
+We can write a decryption script using the encryption script as a reference.
+```
+def decrypt_value(key: bytes, encrypted: str) -> str:
+    backend = default_backend()
+data = base64.b64decode(encrypted)
+    iv = data[:16]
+    ct = data[16:]
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+    decryptor = cipher.decryptor()
+    padded_data = decryptor.update(ct) + decryptor.finalize()
+    unpadder = padding.PKCS7(128).unpadder()
+value = unpadder.update(padded_data) + unpadder.finalize()
+    return padded_data
+
+    base_key = "0cccaf41450b4c0ca95f1a9c"
+
+    certifier = "Ak4gHIGV"
+key = (certifier + base_key).encode()
+    print(decrypt_value(key, "nV89mdFKlANlLKX0h4nbBcXqvobH8J75oQJQW93DZl4a1kSYlxZTZBP+iYB+yAM7"))
+```
+
+Running this will get the flag
