@@ -70,6 +70,10 @@
     @apply rounded-md;
     @apply border-t-4;
   }
+  code {
+    @apply text-wrap;
+    @apply wrap-anywhere;
+  }
 }
 
 .callout p {

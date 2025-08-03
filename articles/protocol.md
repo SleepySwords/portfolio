@@ -227,15 +227,13 @@ trying to read sockets using our arbitrary read technique to trying to produce
 a name that would cause some weirdness.
 
 One piece of information was the locked version in the package.json. Looking up
-the CVE for axios we see:
-
-[https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6](https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6)
-
-Server-side request forgery for axios and the version used has not been
-patched. We also use the base URL which matches perfectly with the exploit.
-That means we could use something like
-`http://localhost/api/img/http://v1.backend.wbc/candidates` and be able
-to access any internal hostnames that we want.
+the
+[CVE](https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6)
+for axios we see there is a Server-side request forgery for axios and the
+version used has not been patched. We also use the base URL which matches
+perfectly with the exploit. That means we could use something like
+`http://localhost/api/img/http://v1.backend.wbc/candidates` and be able to
+access any internal hostnames that we want.
 
 We thought we could use this and directly provide the redis-socket as a
 hostname. However, this failed because redis has not opened any ports. So we
@@ -257,7 +255,7 @@ this. Attempting this on a local instance.
 ![axios](/secudu/axios.png)
 
 Bingo, we hit the redis container. We do have an issue though, redis detects
-the `HOST:` header and terminates the connection without sending the flag. We
+the `HOST:` header and terminates the connection, so we cannot get the flag. We
 stumbled upon this
 [article](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/) which
 talks about using carriage returns to insert bulk strings to break up the Host
@@ -293,7 +291,7 @@ socket-listener-1  |
 ```
 
 Another thing to note from the article talking about redis ssrf is that the
-commands before the Host: actually are executed and not reversed.
+commands before the Host: actually are still executed.
 
 So, we can use a SET or a HSET command at the start by setting the method to
 those things. Redis does not have a way to move keys of different types, ie we
