@@ -15,12 +15,13 @@ export default function Home() {
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
         duration: 1300,
-        delay: function(_, i) {
+        delay: function (_, i) {
           return i * 200;
         },
         direction: "alternate",
       })
-      .add(".lines text",
+      .add(
+        ".lines text",
         {
           fillOpacity: [0, 1],
           stroke: "#ebbab9",
@@ -96,21 +97,21 @@ export default function Home() {
               </text>
             </g>
           </svg>
-          <div className="name mb-5 mt-20">
-            <a className="opacity-100 text-xl font-bold text-(--secondary)">
+          <div className="name mt-20 mb-5">
+            <a className="text-xl font-bold text-(--secondary) opacity-100">
               SleepySwords
             </a>
           </div>
-          <div className="logo mb-32 mt-10 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
+          <div className="logo mt-10 mb-32 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
             <Link
               href="https://github.com/sleepySwords/"
-              className={`opacity-100 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-100 transition-colors hover:text-gray-100`}
             >
               <FaGithub />
             </Link>
             <Link
               href="mailto:me@sleepyswords.dev"
-              className={`opacity-100 mb-3 text-4xl font-semibold text-gray-400 transition-colors hover:text-gray-100`}
+              className={`mb-3 text-4xl font-semibold text-gray-400 opacity-100 transition-colors hover:text-gray-100`}
             >
               <MdEmail />
             </Link>

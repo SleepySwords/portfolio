@@ -6,7 +6,7 @@ export default async function Blog() {
   const staticParams = await generateStaticParams();
   return (
     <main className="flex" style={{ gridTemplateColumns: "1fr 4fr 1fr" }}>
-      <div className="shrink-0 grow-0 basis-64 flex">
+      <div className="flex shrink-0 grow-0 basis-64">
         <SideBar posts={staticParams} />
       </div>
     </main>

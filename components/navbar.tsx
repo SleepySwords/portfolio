@@ -61,7 +61,7 @@ export default function Navbar() {
           <NavbarLink href="/projects">projects</NavbarLink>
 
           <div
-            className="cursor-pointer select-none px-2 transition-colors hover:text-gray-400"
+            className="cursor-pointer px-2 transition-colors select-none hover:text-gray-400"
             onClick={onThemeClick}
           >
             {!mounted ? (

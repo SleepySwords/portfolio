@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @layer utilities {
   :root {
@@ -13,28 +13,28 @@
     scroll-behavior: smooth;
   }
 
-  [data-theme='dark'] {
+  [data-theme="dark"] {
     --background: var(--dark-colour);
     --foreground: var(--light-colour);
     --projectBackground: #242425dd;
     --projectBorder: #404040;
   }
 
-  [data-theme='light'] {
+  [data-theme="light"] {
     --background: var(--light-colour);
     --foreground: var(--dark-colour);
     --projectBackground: #f3f3f3dd;
     --projectBorder: #d4d4d4;
   }
 
-  [data-theme='auto'] {
+  [data-theme="auto"] {
     --background: var(--light-colour);
     --foreground: var(--dark-colour);
     --projectBackground: #f3f3f3dd;
     --projectBorder: #d4d4d4;
   }
   @media (prefers-color-scheme: dark) {
-    [data-theme='auto'] {
+    [data-theme="auto"] {
       --background: var(--dark-colour);
       --foreground: var(--light-colour);
       --projectBackground: #242425dd;

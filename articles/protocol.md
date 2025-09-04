@@ -4,9 +4,10 @@ date: 2025-07-03
 ---
 
 I participated in a group for this year SECudu CTF and we encountered one
-challenge that was too good not to do a writeup on. 
+challenge that was too good not to do a writeup on.
 
 # Context
+
 The entire CTF was around the theme of elections and democracy of Freedonia.
 The Following Protocol challenge told us that the user "wbc" had not voted for
 a valid party and simply asked to find out who they voted for.
@@ -64,7 +65,7 @@ services:
         aliases:
           - v1.backend.wbc
     hostname: v1.backend.wbc
-  
+
   v2:
     build: ./python-backend
     volumes:
@@ -76,7 +77,7 @@ services:
     hostname: v2.backend.wbc
 
   node:
-    build: 
+    build:
       context: ./node-app
     ports:
       - "80:80"
@@ -91,7 +92,6 @@ volumes:
 networks:
   ctfnet:
     driver: bridge
-
 ```
 
 There are 4 containers. The nginx and the node containers act as a reverse
@@ -103,12 +103,13 @@ The v1 project is not that interesting so we shall focus on all the
 other projects.
 
 # NGINX context
+
 This project is deceptively simple. There are two config files.
 
 One config acts as a proxy, changing the url path from
 `http://backend.wbc/v1/xxx` to `http://v1.backend.wbc/xxx` to be able to
 connect to the appropriate machine, as they are defined by their hostnames in
-    the compose file.
+the compose file.
 
 ![](/secudu/default_nginx.png)
 
@@ -118,6 +119,7 @@ database.
 ![](/secudu/img_nginx.png)
 
 # redis context
+
 Redis is pretty simple. There is a start script which starts redis using a
 socket and disabling the port by provide the port 0 to bind to. The thing to
 note here is that the permissions given to this socket is 777. So anyone or
@@ -146,6 +148,7 @@ We can see that the versions have been pinned in the `package.json` file
 ![](/secudu/uwebsockets.png)
 
 # V2 context
+
 This is the main interaction point of the project. There are three methods of
 interest here. `vote`, `certificate` and `encrypt_value`. Two of them act as
 routes being the primary way to access this project.
@@ -167,13 +170,13 @@ pdf format if it is able to and sends that to the user.
 
 ![](/secudu/vote_confirm.png)
 
-
 ---
 
 That should be all the context needed to solve the challenge, if you want to
 solve it yourself. Read ahead if you want to know the solution.
 
 # The certifier
+
 The first piece of information that we will focus on finding is the certifier.
 
 The `vote_confirm` method gives the certifier of any name inputted. So using
@@ -193,6 +196,7 @@ Opening the pdf we get our first bit of information.
 ![pdf](/secudu/pdf.png)
 
 # The encryption key
+
 Finding this was a bit more challenging. The key here is that what if the file
 already existed.
 
@@ -221,6 +225,7 @@ curl --request POST \
 ![curl_env](/secudu/curl_env.png)
 
 # The encrypted vote
+
 Now the final and most difficult part. Finding the encrypted vote. We struggled
 hard for this trying many different things over the span of two weeks. From
 trying to read sockets using our arbitrary read technique to trying to produce
@@ -280,6 +285,7 @@ curl --path-as-is -i -s -k -X 'PUT' \
 ```
 
 Using this we get the request:
+
 ```
 socket-listener-1  | PUT "test wow.backend.wbc/ HTTP/1.0
 socket-listener-1  | Host: localhost
@@ -304,6 +310,7 @@ before the redis instance, we can write a full lua script that fetches wbc
 encrypted vote and sets it to a key of our choosing.
 
 The command we want to achieve is therefore this:
+
 ```
 EVAL "return redis.call('SET', 'img:2901390', redis.call('HGET','wbc','voted_for'))" 2
 ```
@@ -330,6 +337,7 @@ curl http://localhost/api/img/2901390
 
 All together we now have all the parts to decrypt the string and get the flag.
 We can write a decryption script using the encryption script as a reference.
+
 ```
 def decrypt_value(key: bytes, encrypted: str) -> str:
     backend = default_backend()

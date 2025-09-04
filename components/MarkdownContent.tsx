@@ -1,6 +1,6 @@
 "use client";
 
-import {animate} from "animejs";
+import { animate } from "animejs";
 import React, { useEffect, useRef, useState } from "react";
 import TableOfContents from "./TableOfContents";
 import mermaid from "mermaid";

@@ -17,7 +17,7 @@ export type Tool = {
   description: string;
   link: string;
   icon: JSX.Element;
-}
+};
 
 export const TOOLS: { [key: string]: Tool } = {
   rust: {
@@ -98,37 +98,65 @@ export const TOOLS: { [key: string]: Tool } = {
 };
 
 export type Project = {
-  id: number,
-  title: string,
-  briefDescription: string,
-  description?: JSX.Element,
-  link: string,
-  tools: Tool[]
-}
+  id: number;
+  title: string;
+  briefDescription: string;
+  description?: JSX.Element;
+  link: string;
+  tools: Tool[];
+};
 
 export const PROJECTS: Project[] = [
   {
     id: 0,
     title: "DreamBerdC",
     briefDescription: "First compiler using LLVM, why not make it perfect?",
-    description: <>
-      Tried to implement a basic version of the meme language <Link href="https://github.com/TodePond/GulfOfMexico">Dreamberd</Link> to learn more about how compilation occurs.
-      This was written in the Rust programming language.
-
-      <h3>Experiences</h3>
-      <ul className="list-disc list-inside">
-        <li>Learnt how to implement a lexer and a parser in Rust to form the abstract syntax tree using <CustomTextLink name={"this"} href="https://craftinginterpreters.com/introduction.html" /> as a reference.</li>
-        <li>Learnt more in depth about how basic control flows, such as if, for and while loops are constructed.</li>
-        <li>Learnt how to use the library <CustomTextLink href="https://github.com/TheDan64/inkwell" name={"inkwell"} /> and LLVM to be able to generate asm code from the abstract syntax tree.</li>
-      </ul>
-
-      <h3>Todos</h3>
-      <ul className="list-disc list-inside">
-        <li>Implement a way to combine basic data types into more complex data types.</li>
-        <li>Learn more about programming language theory.</li>
-        <li>Try to implement my own codegen to gain further experience in how the asm is actually created, for example: how registers are selected to do operations.</li>
-      </ul>
-    </>,
+    description: (
+      <>
+        Tried to implement a basic version of the meme language{" "}
+        <Link href="https://github.com/TodePond/GulfOfMexico">Dreamberd</Link>{" "}
+        to learn more about how compilation occurs. This was written in the Rust
+        programming language.
+        <h3>Experiences</h3>
+        <ul className="list-inside list-disc">
+          <li>
+            Learnt how to implement a lexer and a parser in Rust to form the
+            abstract syntax tree using{" "}
+            <CustomTextLink
+              name={"this"}
+              href="https://craftinginterpreters.com/introduction.html"
+            />{" "}
+            as a reference.
+          </li>
+          <li>
+            Learnt more in depth about how basic control flows, such as if, for
+            and while loops are constructed.
+          </li>
+          <li>
+            Learnt how to use the library{" "}
+            <CustomTextLink
+              href="https://github.com/TheDan64/inkwell"
+              name={"inkwell"}
+            />{" "}
+            and LLVM to be able to generate asm code from the abstract syntax
+            tree.
+          </li>
+        </ul>
+        <h3>Todos</h3>
+        <ul className="list-inside list-disc">
+          <li>
+            Implement a way to combine basic data types into more complex data
+            types.
+          </li>
+          <li>Learn more about programming language theory.</li>
+          <li>
+            Try to implement my own codegen to gain further experience in how
+            the asm is actually created, for example: how registers are selected
+            to do operations.
+          </li>
+        </ul>
+      </>
+    ),
     link: "https://github.com/SleepySwords/DreamBerdc",
     tools: [TOOLS.rust, TOOLS.llvm],
   },

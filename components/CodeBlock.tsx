@@ -36,12 +36,12 @@ export function CodeBlock({
     }, 1000);
   };
 
-  const languageClass = language ? `language-${language}` : ""
+  const languageClass = language ? `language-${language}` : "";
 
   return (
     <div className="relative">
       <div
-        className="absolute right-2 top-2 flex cursor-pointer rounded border border-neutral-700 bg-neutral-800 p-1.5 text-neutral-300 transition-colors hover:bg-neutral-900"
+        className="absolute top-2 right-2 flex cursor-pointer rounded border border-neutral-700 bg-neutral-800 p-1.5 text-neutral-300 transition-colors hover:bg-neutral-900"
         onClick={handleClick}
       >
         {copied > 0 && <div className="pr-1 text-xs">Copied</div>}

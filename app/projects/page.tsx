@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import {createTimeline} from "animejs";
+import { createTimeline } from "animejs";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { Tooltip } from "react-tooltip";
@@ -74,7 +74,6 @@ export default function Projects() {
       });
   });
 
-
   function backgroundAndBorder() {
     return "hover:border-(--projectBorder) hover:bg-(--projectBackground)";
   }
@@ -112,8 +111,8 @@ export default function Projects() {
             <div
               className={`cards group rounded-lg border border-transparent px-5 py-4 transition-colors transition-transform hover:scale-110 ${backgroundAndBorder()}`}
             >
-              <h2 className={`mb-3.5 mt-0 text-2xl font-semibold underline`}>
-                <Link href={`projects/${ item.id }`}>
+              <h2 className={`mt-0 mb-3.5 text-2xl font-semibold underline`}>
+                <Link href={`projects/${item.id}`}>
                   {item.title}{" "}
                   <span className="inline-block group-hover:translate-x-1 motion-reduce:transform-none">
                     -&gt;

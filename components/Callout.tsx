@@ -21,10 +21,7 @@ export default function Callout({
   type: keyof typeof data;
 }) {
   return (
-    <div
-      className="callout mb-4 mt-4 flex place-items-center
-    rounded-sm border border-(--projectBorder) bg-(--projectBackground) p-5 text-(--foreground)"
-    >
+    <div className="callout mt-4 mb-4 flex place-items-center rounded-sm border border-(--projectBorder) bg-(--projectBackground) p-5 text-(--foreground)">
       {data[type]}
       <div className="ml-4">
         <span className="font-bold">{title}</span>
