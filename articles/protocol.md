@@ -226,37 +226,37 @@ hard for this trying many different things over the span of two weeks. From
 trying to read sockets using our arbitrary read technique to trying to produce
 a name that would cause some weirdness.
 
-One piece of information was the locked version in the package.json. Looking up
+One piece of information was the locked version in the package.json for axios. Looking up
 the
 [CVE](https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6)
-for axios we see there is a Server-side request forgery for axios and the
-version used has not been patched. We also use the base URL which matches
-perfectly with the exploit. That means we could use something like
+we see there is a Server-side request forgery for axios and the
+version used has not been patched. The code also used the base URL which
+matches perfectly with the exploit. That means we could use something like
 `http://localhost/api/img/http://v1.backend.wbc/candidates` and be able to
 access any internal hostnames that we want.
 
 We thought we could use this and directly provide the redis-socket as a
-hostname. However, this failed because redis has not opened any ports. So we
-struggled with this for ages, wondering if this would help us to find anything.
+hostname. However, this failed because redis was opened with only a unix
+socket, no tcp ports. So we struggled with this for ages, wondering if this
+would help us to find anything.
 
-Another thing that this exploit do is be able to skip the validation step of
-the node application. We can put anything in `xx` below not limited by `v1`,
-`v2`, ...
+Another way to use this exploit was to skip the validation step of the node
+application. We can put anything in `xx` below not limited by `v1`, `v2`, ...
 `http://localhost/api/img/http://nginx/xx/yy`
 
 After a week, we stumbled upon a [forum
 post](https://serverfault.com/questions/316157/how-do-i-configure-nginx-proxy-pass-node-js-http-server-via-unix-socket).
-NGINX also directly uses proxy pass without anything and we pass the first
-argument to the front and the second to the back. So what if we have a url like
-this. Attempting this on a local instance.
+NGINX also directly uses proxy pass and we can control the first argument that
+will be placed in the front and the second which is placed on the back of the
+URL. So what if we have a url like this. Attempting this on a local instance.
 
 `http://localhost/api/img/http://nginx/unix:/redis/redis.sock:/`
 
 ![axios](/secudu/axios.png)
 
 Bingo, we hit the redis container. We do have an issue though, redis detects
-the `HOST:` header and terminates the connection, so we cannot get the flag. We
-stumbled upon this
+the `HOST:` header and terminates the connection, so we cannot directly get the
+flag. We stumbled upon this
 [article](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/) which
 talks about using carriage returns to insert bulk strings to break up the Host
 header. The solution did not exactly work here.
@@ -264,9 +264,10 @@ header. The solution did not exactly work here.
 Using edgeshark (tool to view packets in docker containers) the way nginx
 handles url encoding before proxying it to the server was odd. It would
 actually translate the url encodings into regular text before sending it to the
-proxy It would translate a `%0D` to a carriage return. However, it would cut
-off the entire url when translating `%0A`. It turns out it would translate any
-url encoding (except probably a few) before sending them to the server.
+proxy. For example, it would translate a `%0D` to a carriage return. However,
+it would cut off the entire url when translating `%0A`. It turns out it would
+translate any url encoding (except probably a few) before sending them to the
+server.
 
 Setting up a test socket listener, we can see exactly what would be sent to the
 unix socket.
