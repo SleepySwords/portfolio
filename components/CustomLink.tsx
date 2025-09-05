@@ -1,5 +1,4 @@
 import Link, { LinkProps } from "next/link";
-import { JSX } from "react";
 
 export default function CustomTextLink(
   attrs: LinkProps & ({ children: React.ReactNode } | { name: string }),
@@ -9,7 +8,7 @@ export default function CustomTextLink(
       <Link
         {...attrs}
         className={
-          "leading-none underline transition-colors hover:text-gray-400"
+          "leading-none underline transition-colors hover:text-gray-400 break-all"
         }
       >
         {attrs.children}
@@ -20,7 +19,7 @@ export default function CustomTextLink(
       <Link
         {...attrs}
         className={
-          "leading-none underline transition-colors hover:text-gray-400"
+          "leading-none underline transition-colors hover:text-gray-400 break-all"
         }
       >
         {attrs.name}
