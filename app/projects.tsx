@@ -125,7 +125,7 @@ export const TOOLS: { [key: string]: Tool } = {
     name: "git",
     description: "A distributed VCS that allows for very cheap branches.",
     link: "https://git-scm.com/",
-  }
+  },
 };
 
 export type Project = {
@@ -202,26 +202,29 @@ export const PROJECTS: Project[] = [
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
-            Learnt more about how Rust works, in particular with its borrowing system.
+            Learnt more about how Rust works, in particular with its borrowing
+            system.
           </li>
           <li>
-            Gained experience with reading existing documentation and be able to implement the client, in this case with the Todoist API.
+            Gained experience with reading existing documentation and be able to
+            implement the client, in this case with the Todoist API.
           </li>
           <li>
-            Learnt more about how serialisation and deserialising works, since there is a json file storage method.
+            Learnt more about how serialisation and deserialising works, since
+            there is a json file storage method.
           </li>
           <li>
-            Understand more systems concepts, such as concurrency, threads and networking.
+            Understand more systems concepts, such as concurrency, threads and
+            networking.
           </li>
           <li>
-            Learnt about how Rust implements concurrency through its async features.
+            Learnt about how Rust implements concurrency through its async
+            features.
           </li>
         </ul>
         <h3>Todos</h3>
         <ul className="list-inside list-disc">
-          <li>
-            Implement more Todoist like features
-          </li>
+          <li>Implement more Todoist like features</li>
           <li>Increase the test coverage of the app</li>
         </ul>
       </>
@@ -236,20 +239,24 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/SleepySwords/moc",
     description: (
       <>
-        Created an interperter for different models of computation, each model of computation has a different format that can be specified.
+        Created an interperter for different models of computation, each model
+        of computation has a different format that can be specified.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
             Learnt more about these models, how they are implemented and used.
           </li>
           <li>
-            Gained experienced in Haskell, the language chosen for implemntation, and more on how functional programming works.
+            Gained experienced in Haskell, the language chosen for
+            implemntation, and more on how functional programming works.
           </li>
           <li>
-            More experience in reading and interperting formats using the Monadparsec library.
+            More experience in reading and interperting formats using the
+            Monadparsec library.
           </li>
           <li>
-            Learnt how lambda calculus in particular could be used to do computations.
+            Learnt how lambda calculus in particular could be used to do
+            computations.
           </li>
         </ul>
         <h3>Todos</h3>
@@ -271,7 +278,13 @@ export const PROJECTS: Project[] = [
     link: "https://git.mcdevs.us/Pioneer/Pioneer/-/tree/experimental-swords",
     description: (
       <>
-        Tried to implement the minecarft protocol using wiki.vg, now closed, <CustomTextLink href={`https://minecraft.wiki/w/Minecraft_Wiki:Protocol_documentation`}>archive</CustomTextLink>, we were able to get chunk loading and player login but nothing more.
+        Tried to implement the minecarft protocol using wiki.vg, now closed,{" "}
+        <CustomTextLink
+          href={`https://minecraft.wiki/w/Minecraft_Wiki:Protocol_documentation`}
+        >
+          archive
+        </CustomTextLink>
+        , we were able to get chunk loading and player login but nothing more.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
@@ -283,14 +296,14 @@ export const PROJECTS: Project[] = [
           <li>
             Learnt more about concurrency and how Kotlin utilises coroutines.
           </li>
-          <li>
-            Experienced a bit about what entity component systems are.
-          </li>
+          <li>Experienced a bit about what entity component systems are.</li>
         </ul>
         <h3>Todos</h3>
         <ul className="list-inside list-disc">
           <li>
-            Try to reimplement this using a dedicated thread for the event loop, and send events to that thread. Rather than letting any thread modify data.
+            Try to reimplement this using a dedicated thread for the event loop,
+            and send events to that thread. Rather than letting any thread
+            modify data.
           </li>
           <li>Try to get multiple players working.</li>
         </ul>
@@ -301,24 +314,28 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     title: "change-function.nvim",
-    briefDescription: "A small neovim plugin to make editing function signatures a breeze.",
+    briefDescription:
+      "A small neovim plugin to make editing function signatures a breeze.",
     link: "https://github.com/SleepySwords/change-function.nvim",
     description: (
       <>
-        This plugin allows a person to add, remove or move parameters in a function signature that will be updated to all its references if possible.
+        This plugin allows a person to add, remove or move parameters in a
+        function signature that will be updated to all its references if
+        possible.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
-            Learnt more about how LSP and Treesitter works, particularly how you can specify queries.
+            Learnt more about how LSP and Treesitter works, particularly how you
+            can specify queries.
           </li>
           <li>
-            Experienced being able to interface with neovims APIs to be able to create custome functionality.
+            Experienced being able to interface with neovims APIs to be able to
+            create custome functionality.
           </li>
+          <li>Learnt more about how to use Lua for scripting capabilities</li>
           <li>
-            Learnt more about how to use Lua for scripting capabilities
-          </li>
-          <li>
-            Learnt how to use popular UI libraries that are within the neovim ecosystem.
+            Learnt how to use popular UI libraries that are within the neovim
+            ecosystem.
           </li>
         </ul>
       </>
@@ -333,15 +350,16 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/SleepySwords/advent_of_code",
     description: (
       <>
-        Advent of code is a yearly challenge, where from the 1st to the 25th there is a new programming challenge that participants try to solve as fast as possible.
+        Advent of code is a yearly challenge, where from the 1st to the 25th
+        there is a new programming challenge that participants try to solve as
+        fast as possible.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
-            Learnt more about programming techniques, such as dynamic programming.
+            Learnt more about programming techniques, such as dynamic
+            programming.
           </li>
-          <li>
-            Learnt about data structures.
-          </li>
+          <li>Learnt about data structures.</li>
           <li>
             Experienced different languages to be able to implement solutions.
           </li>
@@ -361,17 +379,15 @@ export const PROJECTS: Project[] = [
     ],
     description: (
       <>
-        Creating small minecraft plugins for the Spigot server. These were the ones that were made public.
+        Creating small minecraft plugins for the Spigot server. These were the
+        ones that were made public.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
+          <li>This was my main introduction to Java.</li>
+          <li>How to structure code and using the Bukkit library.</li>
           <li>
-            This was my main introduction to Java.
-          </li>
-          <li>
-            How to structure code and using the Bukkit library.
-          </li>
-          <li>
-            Learnt how to use coding conventions and how to better structure code later on.
+            Learnt how to use coding conventions and how to better structure
+            code later on.
           </li>
         </ul>
       </>
@@ -391,9 +407,7 @@ export const PROJECTS: Project[] = [
           <li>
             Learnt how to use Lua to be able to create custom functionality.
           </li>
-          <li>
-            Learnt how to utilise Git (across all projects)
-          </li>
+          <li>Learnt how to utilise Git (across all projects)</li>
         </ul>
       </>
     ),
@@ -406,21 +420,18 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/SleepySwords/portfolio",
     description: (
       <>
-        This website uses NextJS as its stack of choice. It compiles to a static website using the export output. This is then deployed onto Cloudflare Pages.
+        This website uses NextJS as its stack of choice. It compiles to a static
+        website using the export output. This is then deployed onto Cloudflare
+        Pages.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>
-            Learn more about React and how it utilises componenets to create applications.
+            Learn more about React and how it utilises componenets to create
+            applications.
           </li>
-          <li>
-            Learn about how state works in react with its use of hooks.
-          </li>
-          <li>
-            Using tailwind CSS to be able to style this website.
-          </li>
-          <li>
-            Use markdoc to be able to render markdown files for the blog.
-          </li>
+          <li>Learn about how state works in react with its use of hooks.</li>
+          <li>Using tailwind CSS to be able to style this website.</li>
+          <li>Use markdoc to be able to render markdown files for the blog.</li>
         </ul>
       </>
     ),

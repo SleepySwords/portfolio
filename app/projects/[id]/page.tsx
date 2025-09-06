@@ -33,7 +33,11 @@ export default async function Page({
             {!Array.isArray(project.link) ? (
               <CustomTextLink href={project.link} name={project.link} />
             ) : (
-              project.link.map((f) => <div><CustomTextLink key={f} href={f} name={f} /></div>)
+              project.link.map((f) => (
+                <div key={f}>
+                  <CustomTextLink href={f} name={f} />
+                </div>
+              ))
             )}
           </div>
           {project.description && (

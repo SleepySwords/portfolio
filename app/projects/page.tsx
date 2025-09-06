@@ -56,7 +56,7 @@ export default function Projects() {
   });
 
   function handleDragStart(event: DragStartEvent) {
-    const activeItem = items.find(o => o.id == event.active.id);
+    const activeItem = items.find((o) => o.id == event.active.id);
     if (activeItem) {
       setActiveId(activeItem);
     }
@@ -100,7 +100,7 @@ export default function Projects() {
       })}
       <div
         ref={projectRef}
-        className="mt-10 grid sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 text-left"
+        className="mt-10 grid text-left sm:grid-cols-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3"
       >
         <DndContext
           sensors={sensors}

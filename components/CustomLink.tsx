@@ -8,7 +8,7 @@ export default function CustomTextLink(
       <Link
         {...attrs}
         className={
-          "leading-none underline transition-colors hover:text-gray-400 break-all"
+          "leading-none break-all underline transition-colors hover:text-gray-400"
         }
       >
         {attrs.children}
@@ -19,7 +19,7 @@ export default function CustomTextLink(
       <Link
         {...attrs}
         className={
-          "leading-none underline transition-colors hover:text-gray-400 break-all"
+          "leading-none break-all underline transition-colors hover:text-gray-400"
         }
       >
         {attrs.name}

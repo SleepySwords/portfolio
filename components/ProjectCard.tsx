@@ -35,7 +35,7 @@ export function ProjectCard({ item }: { item: Project }) {
             </Link>
           </h2>
           <RxDragHandleDots2
-            className={`cursor-grab hidden sm:inline`}
+            className={`hidden cursor-grab sm:inline`}
             color="gray"
             {...listeners}
             {...attributes}
