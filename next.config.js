@@ -2,11 +2,12 @@
 const withMarkdoc = require("@markdoc/next.js");
 
 module.exports = withMarkdoc({ mode: "static", schemaPath: "./markdoc" })({
+  turbopack: {},
   pageExtensions: ["md", "mdoc", "js", "jsx", "ts", "tsx"],
   output: "export",
   images: { unoptimized: true },
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname,
-  },
+  // serverRuntimeConfig: {
+  //   PROJECT_ROOT: __dirname,
+  // },
   compress: false,
 });

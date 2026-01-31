@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import getConfig from "next/config";
 import SideBar from "@/components/Sidebar";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
@@ -8,20 +7,20 @@ import { components, config } from "@/markdoc/markdoc";
 import matter from "gray-matter";
 import MarkdownContent from "@/components/MarkdownContent";
 
-const { serverRuntimeConfig } = getConfig();
+const cwd = process.cwd();
 
 // FIXME: This is the most jank shit, could be fixed when
 // the discussion https://github.com/markdoc/markdoc/discussions/462
 // has a better resolution.
 export async function generateStaticParams() {
   const files = fs.readdirSync(
-    path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles"),
+    path.join(cwd, "./articles"),
   );
   const articles = await Promise.all(
     files.map(async (post) => {
       const slug = post.replace(".md", "");
-      const { title, date } = await getMarkdocContent(slug);
-      return { slug: slug, title: title, date: date };
+      const { content, ast, title, date } = await getMarkdocContent(slug);
+      return { content: content, ast: ast, slug: slug, title: title, date: date };
     }),
   );
   articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
@@ -31,7 +30,7 @@ export async function generateStaticParams() {
 async function getMarkdocContent(slug: string) {
   const file = fs.readFileSync(
     path.join(
-      serverRuntimeConfig.PROJECT_ROOT,
+      cwd,
       "./articles/".concat(slug, ".md"),
     ),
     "utf-8",
@@ -63,9 +62,10 @@ function extractHeadings(node: any, sections: any[] = []) {
   return sections;
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const staticParams = await generateStaticParams();
-  const { content, ast, title, date } = await getMarkdocContent(params.slug);
+  const slug = (await params).slug;
+  const { content, ast, title, date } = staticParams.filter((a) => a.slug == slug)[0];
   const tableOfContents = extractHeadings(ast);
   const reactContent = Markdoc.renderers.react(content, React, { components });
 
