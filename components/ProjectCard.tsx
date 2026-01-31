@@ -41,7 +41,7 @@ export function ProjectCard({ item }: { item: Project }) {
             {...attributes}
           />
         </div>
-        <p className={`m-0 h-12 max-w-[30ch] text-sm opacity-50`}>
+        <p className={`m-0 h-12 mb-2 max-w-[30ch] text-sm opacity-50`}>
           {item.briefDescription}
         </p>
         <div className="font-semibold">Skills</div>

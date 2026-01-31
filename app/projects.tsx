@@ -7,6 +7,7 @@ import {
   SiNeovim,
   SiSpigotmc,
   SiTailwindcss,
+  SiWgpu,
 } from "react-icons/si";
 import { TbBrandKotlin } from "react-icons/tb";
 import Image from "next/image";
@@ -125,6 +126,13 @@ export const TOOLS: { [key: string]: Tool } = {
     name: "git",
     description: "A distributed VCS that allows for very cheap branches.",
     link: "https://git-scm.com/",
+  },
+  wgpu: {
+    id: "wgpu",
+    icon: <SiWgpu />,
+    name: "wgpu",
+    description: "Cross-platform graphics library",
+    link: "https://wgpu.rs/",
   },
 };
 
@@ -436,5 +444,25 @@ export const PROJECTS: Project[] = [
       </>
     ),
     tools: [TOOLS.react, TOOLS.tailwind, TOOLS.markdoc],
+  },
+  {
+    id: 9,
+    title: "Cellular automota",
+    briefDescription: "Experience conway's game of life from any input image.",
+    link: "https://github.com/SleepySwords/cellular-automata",
+    description: (
+      <>
+        Uses wgpu to be able to simulate conway's game of life on the graphics card. Upload any image you want and be able to see how gol transforms it into a pretty simulation.
+        <h3>Experiences</h3>
+        <ul className="list-inside list-disc">
+          <li>
+          Wrote graphics code, using textures, buffers, bind groups and pipelines.
+          </li>
+          <li>Implemented the window handling, including drag and drop functionality for images.</li>
+          <li>Wrote a game of life graphics shader using the WGSL language.</li>
+        </ul>
+      </>
+    ),
+    tools: [TOOLS.wgpu, TOOLS.rust],
   },
 ];
