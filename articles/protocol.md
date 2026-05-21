@@ -8,12 +8,13 @@ challenge that was too good not to do a writeup on.
 
 # Context
 
-The entire CTF was around the theme of elections and democracy of Freedonia.
+The entire CTF was around the theme of elections and democracy within the nation
+of Freedonia.
 The Following Protocol challenge told us that the user "wbc" had not voted for
-a valid party and simply asked to find out who they voted for.
+a valid party and simply asked us to find out who they voted for.
 
-Included in the challenge was a url to the instance as well as the source code.
-The source code contained 4 directories and a docker compose file to start the
+Included in the challenge was a URL to the challenge instance, in addition to the source code.
+The source code contained 4 directories and a Docker compose file to start the
 instance up.
 
 ![dir](/secudu/dir.png)
@@ -95,34 +96,34 @@ networks:
 ```
 
 There are 4 containers. The nginx and the node containers act as a reverse
-proxy. There is a redis container acting as a database and there are two api
-projects. There seems to be a redis socket that is shared between v2, nginx and
-the redis container itself.
+proxy. There is a redis container acting as a database and there are two backend api
+v1 and v2. The way v2 and nginx communicated to Redis was through a Unix Socket,
+which was shared using Docker's volume option.
 
-The v1 project is not that interesting so we shall focus on all the
+The v1 API project is not relevant to solving the challenge so we shall focus on the
 other projects.
 
 # NGINX context
 
 This project is deceptively simple. There are two config files.
 
-One config acts as a proxy, changing the url path from
+One config acts as a reverse proxy, changing the url path from
 `http://backend.wbc/v1/xxx` to `http://v1.backend.wbc/xxx` to be able to
-connect to the appropriate machine, as they are defined by their hostnames in
-the compose file.
+redirect HTTP requests to the appropriate machine, as the new domain name
+are defined by their hostnames in the compose file.
 
 ![](/secudu/default_nginx.png)
 
-The other config acts as an image server, providing images stored on the redis
-database.
+The other config acts as an image server, providing images that are stored
+on the redis database.
 
 ![](/secudu/img_nginx.png)
 
 # redis context
 
 Redis is pretty simple. There is a start script which starts redis using a
-socket and disabling the port by provide the port 0 to bind to. The thing to
-note here is that the permissions given to this socket is 777. So anyone or
+socket that also disables the TCP port by providing 0 as the port to bind to.
+The thing to note here is that the permissions given to this socket is 777. So
 anything can access this socket. Another important thing to note is that the
 default redis container does NOT provide any authentication by design to help
 with testing. So any commands sent to the redis container would not require
@@ -131,8 +132,8 @@ authentication.
 ![](/secudu/redis.png)
 
 There is also another script that runs as a cron job. It resets the redis
-container populating it with default data. Including the information regarding
-wbc vote.
+container populating it with default data. This is not as important and is
+mostly done to prevent griefing the redis instance.
 
 ![](/secudu/redis2.png)
 
@@ -150,8 +151,8 @@ We can see that the versions have been pinned in the `package.json` file
 # V2 context
 
 This is the main interaction point of the project. There are three methods of
-interest here. `vote`, `certificate` and `encrypt_value`. Two of them act as
-routes being the primary way to access this project.
+interest here. `vote`, `certificate` and `encrypt_value`. Two of them are behind HTTP
+routes being the primary way to interact with this project.
 
 The `vote` route demonstrates how the vote is actually initially fetched. We
 can see that this method is not properly guarded against candidate names so any
@@ -165,15 +166,15 @@ the encryption key to be able to decrypt this value.
 
 ![](/secudu/encrypt.png)
 
-Finally, the certificate. This route creates and saves a pdf of the name and the certifier in a
-pdf format if it is able to and sends that to the user.
+Finally, the certificate. This route creates and saves a pdf of the name and the certifier and
+if able sends that to the user.
 
 ![](/secudu/vote_confirm.png)
 
 ---
 
 That should be all the context needed to solve the challenge, if you want to
-solve it yourself. Read ahead if you want to know the solution.
+solve it yourself. Read ahead if you want to look at out solution.
 
 # The certifier
 
@@ -197,14 +198,14 @@ Opening the pdf we get our first bit of information.
 
 # The encryption key
 
-Finding this was a bit more challenging. The key here is that what if the file
+Finding this was a bit more challenging. The key here is to ask what if the file
 already existed.
 
 ![](/secudu/catch.png)
 
-Here we can see that the way it handles it is by using a catch and logging that
-information and sends out the file. So using an existing file name would
-produce the previous file, it would not override that file.
+Here we can see that the way this is handled is by using a catch, logging that
+information and crucially still sends out the file. So using an existing filename
+would produce the previous file, it would not override that file.
 
 Another thing to note is the way the path is constructed.
 
@@ -234,44 +235,47 @@ a name that would cause some weirdness.
 One piece of information was the locked version in the package.json for axios. Looking up
 the
 [CVE](https://github.com/axios/axios/security/advisories/GHSA-jr5f-v2jv-69x6)
-we see there is a Server-side request forgery for axios and the
-version used has not been patched. The code also used the base URL which
-matches perfectly with the exploit. That means we could use something like
-`http://localhost/api/img/http://v1.backend.wbc/candidates` and be able to
+we see there is a Server-side request forgery for axios and the pinned
+version had not been patched. The exploit uses the base URL which
+matches perfectly with the code given. That means we could send a request to
+this URL `http://localhost/api/img/http://v1.backend.wbc/candidates` and be able to
 access any internal hostnames that we want.
 
-We thought we could use this and directly provide the redis-socket as a
-hostname. However, this failed because redis was opened with only a unix
-socket, no tcp ports. So we struggled with this for ages, wondering if this
-would help us to find anything.
+We thought we could use this by directly connecting to redis using redis-socket
+as a hostname. However, this failed because redis was only opened with unix
+socket, the TCP port was disabled. So we struggled with this for ages, wondering
+if this exploit would actually help us to find anything.
 
 Another way to use this exploit was to skip the validation step of the node
-application. We can put anything in `xx` below not limited by `v1`, `v2`, ...
+application. We can put anything in `xx`  we are not limited by `v1`, `v2`, etc
+
+For example, we could use this URL to directly access the nginx container.
 `http://localhost/api/img/http://nginx/xx/yy`
 
 After a week, we stumbled upon a [forum
 post](https://serverfault.com/questions/316157/how-do-i-configure-nginx-proxy-pass-node-js-http-server-via-unix-socket).
-NGINX also directly uses proxy pass and we can control the first argument that
-will be placed in the front and the second which is placed on the back of the
-URL. So what if we have a url like this. Attempting this on a local instance.
+NGINX matches, directly using proxy pass. We can control the first argument that
+will be placed in the front and the second argument which would be placed on the 
+back of the URL. So what if we have a URL that looked like this.
 
 `http://localhost/api/img/http://nginx/unix:/redis/redis.sock:/`
+
+Attempting this on a local instance.
 
 ![axios](/secudu/axios.png)
 
 Bingo, we hit the redis container. We do have an issue though, redis detects
-the `HOST:` header and terminates the connection, so we cannot directly get the
-flag. We stumbled upon this
-[article](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/) which
+the `HOST:` header and terminates the connection before returning the output,
+so we cannot directly get the flag. We stumbled upon this [article](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/) which
 talks about using carriage returns to insert bulk strings to break up the Host
-header. The solution did not exactly work here.
+header. That solution did not exactly work here.
 
-Using edgeshark (tool to view packets in docker containers) the way nginx
+Using edgeshark (a tool to view packets in Docker containers) the way nginx
 handles url encoding before proxying it to the server was odd. It would
 actually translate the url encodings into regular text before sending it to the
-proxy. For example, it would translate a `%0D` to a carriage return. However,
-it would cut off the entire url when translating `%0A`. It turns out it would
-translate any url encoding (except probably a few) before sending them to the
+proxy. For example, it would translate this direct string `%0D` to a carriage return.
+However, it would cut off the rest of the URL when translating `%0A`.
+It turns out it would translate any url encoding before sending them to the
 server.
 
 Setting up a test socket listener, we can see exactly what would be sent to the
@@ -300,13 +304,13 @@ socket-listener-1  |
 Another thing to note from the article talking about redis ssrf is that the
 commands before the Host: actually are still executed.
 
-So, we can use a SET or a HSET command at the start by setting the method to
-those things. Redis does not have a way to move keys of different types, ie we
-cannot get a thing set by HSET and get it with GET.
+So, we can emulate a SET or a HSET command by setting the method to
+those things. Redis unfortunately does not have a way to move keys of
+different types, ie we cannot set a thing using HSET and get it with GET.
 
 There is a small command in Redis that allows us to extract the key though. It
 is the EVAL command. As any url encoding is accepted and actually decoded
-before the redis instance, we can write a full lua script that fetches wbc
+before hitting the redis instance, we can write a full lua script that fetches wbc
 encrypted vote and sets it to a key of our choosing.
 
 The command we want to achieve is therefore this:
@@ -358,4 +362,4 @@ key = (certifier + base_key).encode()
     print(decrypt_value(key, "nV89mdFKlANlLKX0h4nbBcXqvobH8J75oQJQW93DZl4a1kSYlxZTZBP+iYB+yAM7"))
 ```
 
-Running this will get the flag
+Running this will get the flag!
