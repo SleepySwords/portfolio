@@ -71,8 +71,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <div className="min-w-0">
-      <div className="grid w-full" style={{ gridTemplateColumns: "20% 60% 20%" }}>
-        <div className="hidden shrink-0 grow-0 basis-64 sm:flex">
+      <div className="grid w-full" style={{ gridTemplateColumns: "25% 50% 25%" }}>
+        <div className="hidden shrink-0 grow-0 basis-64 sm:flex mr-10">
           <SideBar posts={staticParams} />
         </div>
         <MarkdownContent
