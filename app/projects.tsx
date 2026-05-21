@@ -280,10 +280,10 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Pioneer",
+    title: "Piston",
     briefDescription:
-      "Helped make an attempt at writing a MC server implemntation from scratch.",
-    link: "https://git.mcdevs.us/Pioneer/Pioneer/-/tree/experimental-swords",
+      "An attempt at writing a MC server implemntation from scratch.",
+    link: "https://github.com/sleepySwords/piston",
     description: (
       <>
         Tried to implement the minecarft protocol using wiki.vg, now closed,{" "}
@@ -292,7 +292,7 @@ export const PROJECTS: Project[] = [
         >
           archive
         </CustomTextLink>
-        , we were able to get chunk loading and player login but nothing more.
+        , we were able to get chunk loading and player login.
         <h3>Experiences</h3>
         <ul className="list-inside list-disc">
           <li>

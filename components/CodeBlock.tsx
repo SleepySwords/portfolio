@@ -50,8 +50,7 @@ export function CodeBlock({
       <pre className={`whitespace-pre-wrap ${languageClass}`}>
         <code
           ref={ref}
-          className={`${languageClass} overflow-clip rounded border border-neutral-700 bg-black bg-neutral-800/30`}
-          style={{ overflowWrap: "anywhere" }}
+          className={`${languageClass} overflow-x-scroll whitespace-pre rounded border border-neutral-700 bg-black bg-neutral-800/30`}
         >
           {children}
         </code>
