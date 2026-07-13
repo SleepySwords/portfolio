@@ -21,7 +21,7 @@ export default function BlogLayout({
   return (
     <main className="justify-top flex flex-col items-center p-8">
       <div className="place-items-start text-3xl font-bold text-(--secondary)">
-        My ramblings
+        Blog
       </div>
       {/*<SkewedBackground />*/}
       <div className="mt-10 grid w-10/12 text-left">{children}</div>

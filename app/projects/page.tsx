@@ -80,7 +80,7 @@ export default function Projects() {
   return (
     <main className="flex flex-col items-center p-8">
       <div className="place-items-start text-3xl font-bold text-(--secondary)">
-        The fun stuff!
+        Projects
       </div>
       {/*<SkewedBackground />*/}
       {Object.entries(TOOLS).map((value) => {

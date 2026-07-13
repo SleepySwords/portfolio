@@ -9,9 +9,6 @@ import MarkdownContent from "@/components/MarkdownContent";
 
 const cwd = process.cwd();
 
-// FIXME: This is the most jank shit, could be fixed when
-// the discussion https://github.com/markdoc/markdoc/discussions/462
-// has a better resolution.
 export async function generateStaticParams() {
   const files = fs.readdirSync(
     path.join(cwd, "./articles"),
