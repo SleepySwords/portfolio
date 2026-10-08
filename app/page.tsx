@@ -172,7 +172,7 @@ export default function Home() {
               SleepySwords
             </a>
           </div>
-          <div className="logo mt-10 mb-32 grid grid-cols-2 place-items-center text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-center">
+          <div className="logo mt-10 mb-32 grid grid-cols-2 place-items-center text-center lg:mb-0 w-full lg:max-w-5xl lg:text-center">
             <Link
               href="https://github.com/sleepySwords/"
               className={`mb-3 text-4xl font-semibold text-gray-400 opacity-100 transition-colors hover:text-gray-100`}
