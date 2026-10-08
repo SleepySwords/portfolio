@@ -34,6 +34,31 @@ export default function Home() {
         },
         "-=2000",
       );
+    const timeline2 = createTimeline({});
+    timeline2
+      .add(".lines2 text", {
+        strokeDashoffset: ["250%", "0%"],
+        easing: "easeInOutCubic",
+        duration: 1300,
+        delay: function(_, i) {
+          return i * 100;
+        },
+        direction: "alternate",
+      })
+      .add(
+        ".lines2 text",
+        {
+          fillOpacity: [0, 1],
+          stroke: "#ebbab9",
+          easing: "easeInOutSine",
+          duration: 400,
+          delay: function(_, i) {
+            return i * 100;
+          },
+          direction: "alternate",
+        },
+        "-=2000",
+      );
     //.add(
     //  {
     //    targets: ".name a",
@@ -60,9 +85,10 @@ export default function Home() {
     <main className="flex grow flex-col items-center justify-between">
       <div className="relative flex grow place-items-center p-8">
         <div className="place-items-center text-center">
-          <svg className="lines w-64 lg:w-[450px]">
+          <svg className="lines lg:block hidden w-64 lg:w-[450px]">
             <g
               className={`fill-(--primary) text-5xl font-bold lg:text-8xl ${strokeColour()}`}
+              fontFamily="Inter"
               fillOpacity="0"
               strokeWidth="1"
               style={{
@@ -71,31 +97,72 @@ export default function Home() {
                 translate: "50% 50%",
               }}
             >
-              <text className="logo-left-1" textAnchor="middle">
+              <text x="-210" textAnchor="middle">
                 ¯
               </text>
-              <text className="logo-left-2" textAnchor="middle">
+              <text x="-170" textAnchor="middle">
                 \
               </text>
-              <text className="logo-left-3" textAnchor="middle">
+              <text x="-120" textAnchor="middle">
                 _
               </text>
-              <text className="logo-left-4" textAnchor="middle">
+              <text x="-70" textAnchor="middle">
                 (
               </text>
-              <text className="" textAnchor="middle">
+              <text x="0" textAnchor="middle">
                 ツ
               </text>
-              <text className="logo-right-4" textAnchor="middle">
+              <text x="70" textAnchor="middle">
                 )
               </text>
-              <text className="logo-right-3" textAnchor="middle">
+              <text x="120" textAnchor="middle">
                 _
               </text>
-              <text className="logo-right-2" textAnchor="middle">
+              <text x="170" textAnchor="middle">
                 /
               </text>
-              <text className="logo-right-1" textAnchor="middle">
+              <text x="210" textAnchor="middle">
+                ¯
+              </text>
+            </g>
+          </svg>
+          <svg className="lines2 block lg:hidden w-64">
+            <g
+              className={`fill-(--primary) text-5xl font-bold ${strokeColour()}`}
+              fontFamily="Inter"
+              fillOpacity="0"
+              strokeWidth="1"
+              style={{
+                strokeDasharray: "250%",
+                strokeDashoffset: "250%",
+                translate: "50% 50%",
+              }}
+            >
+              <text x="-110" textAnchor="middle">
+                ¯
+              </text>
+              <text x="-90" textAnchor="middle">
+                \
+              </text>
+              <text x="-60" textAnchor="middle">
+                _
+              </text>
+              <text x="-40" textAnchor="middle">
+                (
+              </text>
+              <text x="0" textAnchor="middle">
+                ツ
+              </text>
+              <text x="40" textAnchor="middle">
+                )
+              </text>
+              <text x="60" textAnchor="middle">
+                _
+              </text>
+              <text x="90" textAnchor="middle">
+                /
+              </text>
+              <text x="110" textAnchor="middle">
                 ¯
               </text>
             </g>
