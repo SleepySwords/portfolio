@@ -15,8 +15,8 @@ export default function Home() {
         strokeDashoffset: ["250%", "0%"],
         easing: "easeInOutCubic",
         duration: 1300,
-        delay: function (_, i) {
-          return i * 200;
+        delay: function(_, i) {
+          return i * 100;
         },
         direction: "alternate",
       })
@@ -27,9 +27,12 @@ export default function Home() {
           stroke: "#ebbab9",
           easing: "easeInOutSine",
           duration: 400,
+          delay: function(_, i) {
+            return i * 100;
+          },
           direction: "alternate",
         },
-        "-=1000",
+        "-=2000",
       );
     //.add(
     //  {
